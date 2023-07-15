@@ -1,5 +1,5 @@
-import React from 'react';
-import './Header.css';
+import "./Header.css";
+import React from "react";
 
 const Header = ({ title }) => {
   return (
@@ -10,4 +10,3 @@ const Header = ({ title }) => {
 };
 
 export default Header;
-

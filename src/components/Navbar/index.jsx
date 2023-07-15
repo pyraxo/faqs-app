@@ -1,38 +1,39 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { Star, Home, MenuBook } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-import "./style.css";
+const routes = ["/", "stalls", "starred"];
 
-const IconNavBar = ({ active, username, toggleWelcome }) => {
+export default function Navbar() {
+  const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
-  const [activeButton, setActiveButton] = useState(null);
-  const [portfolioVisible, setPortfolioVisible] = useState(false);
 
   return (
-    <>
-      <div className="image-container">
-        <button
-          className={`image-button ${active === "portfolio" ? "active" : ""}`}
-          onClick={() => {}}
-        >
-          <img src={""} alt="" className="image" />
-        </button>
-
-        <button
-          className={`image-button ${activeButton === "home" ? "active" : ""}`}
-          onClick={() => {}}
-        >
-          <img src={""} alt="" className="image" />
-        </button>
-
-        <button
-          className={`image-button ${activeButton === "rooms" ? "active" : ""}`}
-          onClick={() => {}}
-        >
-          <img src={""} alt="" className="image" />
-        </button>
-      </div>
-    </>
+    <Box
+      sx={{ position: "fixed", bottom: 0, left: 0, right: 0, width: "100%" }}
+      elevation={3}
+    >
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+          navigate(routes[newValue]);
+        }}
+      >
+        <BottomNavigationAction
+          icon={<Home style={{ color: value === 0 ? "#86BD55" : "inherit" }} />}
+        />
+        <BottomNavigationAction
+          icon={
+            <MenuBook style={{ color: value === 1 ? "#86BD55" : "inherit" }} />
+          }
+        />
+        <BottomNavigationAction
+          icon={<Star style={{ color: value === 2 ? "#86BD55" : "inherit" }} />}
+        />
+      </BottomNavigation>
+    </Box>
   );
-};
-export default IconNavBar;
+}
