@@ -45,54 +45,54 @@ const Home = () => {
 
   const data = [
     {
-      column1: '',
-      column2: 'No. of people',
-      column3: 'Waiting Time (min)'
+      StallName: '',
+      QueueLength: 'No. of people',
+      WaitTime: 'Waiting Time (min)'
     },
     {
-      column1: 'Chicken Rice',
-      column2: '12',
-      column3: '10'
+      StallName: 'Chicken Rice',
+      QueueLength: '12',
+      WaitTime: '10'
     },
     {
-      column1: 'Indian',
-      column2: '-',
-      column3: '-'
+      StallName: 'Indian',
+      QueueLength: '-',
+      WaitTime: '-'
     },
     {
-      column1: 'TaiWanese',
-      column2: '7',
-      column3: '10'
+      StallName: 'TaiWanese',
+      QueueLength: '7',
+      WaitTime: '10'
     },
     {
-      column1: 'Healthy Soup',
-      column2: '4',
-      column3: '3'
+      StallName: 'Healthy Soup',
+      QueueLength: '4',
+      WaitTime: '3'
     },
     {
-      column1: 'Japanese & Korean',
-      column2: '3',
-      column3: '5'
+      StallName: 'Japanese & Korean',
+      QueueLength: '3',
+      WaitTime: '5'
     },
     {
-      column1: 'Mixed Rice',
-      column2: '2',
-      column3: '0'
+      StallName: 'Mixed Rice',
+      QueueLength: '2',
+      WaitTime: '0'
     },
     {
-      column1: 'Drinks & Snacks',
-      column2: '1',
-      column3: '0'
+      StallName: 'Drinks & Snacks',
+      QueueLength: '1',
+      WaitTime: '0'
     },
     {
-      column1: 'Noodles',
-      column2: '20',
-      column3: '35'
+      StallName: 'Noodles',
+      QueueLength: '20',
+      WaitTime: '35'
     },
     {
-      column1: 'Muslim',
-      column2: '7',
-      column3: '15'
+      StallName: 'Muslim',
+      QueueLength: '7',
+      WaitTime: '15'
     },
   ];
 
