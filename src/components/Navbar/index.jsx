@@ -25,15 +25,28 @@ export default function Navbar() {
         }}
       >
         <BottomNavigationAction
-          icon={<Home style={{ color: value === 0 ? "#86BD55" : "inherit" }} />}
-        />
-        <BottomNavigationAction
           icon={
-            <MenuBook style={{ color: value === 1 ? "#86BD55" : "inherit" }} />
+            <Home
+              size="large"
+              style={{ color: value === 0 ? "#86BD55" : "inherit" }}
+            />
           }
         />
         <BottomNavigationAction
-          icon={<Star style={{ color: value === 2 ? "#86BD55" : "inherit" }} />}
+          icon={
+            <MenuBook
+              size="large"
+              style={{ color: value === 1 ? "#86BD55" : "inherit" }}
+            />
+          }
+        />
+        <BottomNavigationAction
+          icon={
+            <Star
+              size="large"
+              style={{ color: value === 2 ? "#86BD55" : "inherit" }}
+            />
+          }
         />
       </BottomNavigation>
     </Box>

@@ -38,9 +38,7 @@ const StallInfo = () => {
           {activeTab === "menu" && (
             <div className="menu-tab">
               <h3></h3>
-              <p>
-                
-              </p>
+              <p></p>
             </div>
           )}
           {activeTab === "calculator" && (
