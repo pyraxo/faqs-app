@@ -34,7 +34,6 @@ body {
   color: #000000;
   transition: background-color 0.2s ease-in-out;
   border-radius: 8px 8px 0 0;
-  border-color: #fead3d;
 }
 
 .tab-button.active {
