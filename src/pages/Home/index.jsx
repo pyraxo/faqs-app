@@ -96,7 +96,6 @@ const Home = () => {
     },
   ];
 
-  // Return the Home component
   return (
     <>
       <Box sx={{ 
@@ -263,5 +262,4 @@ const Home = () => {
   );
 };
 
-// Default export Home component
 export default Home;
