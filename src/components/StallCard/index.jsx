@@ -1,8 +1,10 @@
-import Star from "@mui/icons-material/Star";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
   CardActionArea,
+  CardActions,
   CardContent,
   CardMedia,
   Unstable_Grid2 as Grid,
@@ -10,7 +12,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import StarOutline from "@mui/icons-material/StarOutline";
 
 import HPB from "assets/hpb.png";
 // TODO: Replace
@@ -19,9 +21,14 @@ import stallInfos from "assets/stalls.json";
 
 export default function StallCard({ stallId }) {
   const navigate = useNavigate();
+  const handleClick = () =>
+    setTimeout(() => navigate(`/stalls/${stallId}`), 200);
+  const handleStarClick = (event) => {
+    event.stopPropagation();
+  };
   return (
     <Card sx={{ display: "flex", width: "90%" }}>
-      <CardActionArea onClick={() => navigate(`/stalls/${stallId}`)}>
+      <CardActionArea onClick={handleClick}>
         <Grid width="100%" container>
           <Grid
             xs={10}
@@ -38,9 +45,15 @@ export default function StallCard({ stallId }) {
             </CardContent>
           </Grid>
           <Grid xs={2} sx={{ display: "flex", justifyContent: "center" }}>
-            <IconButton aria-label="star">
-              <Star />
-            </IconButton>
+            <CardActions>
+              <IconButton
+                aria-label="star"
+                size="small"
+                onClick={handleStarClick}
+              >
+                <StarOutline />
+              </IconButton>
+            </CardActions>
           </Grid>
           <Grid
             xs={3}
