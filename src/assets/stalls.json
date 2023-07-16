@@ -1,9 +1,37 @@
 [
-  { "name": "Dong Sheng Chicken Rice", "img": "chicken-rice.png", "description": "Hainanese chicken rice specialty." },
-  { "name": "Al-Masha's Kitchen", "img": "indian.png", "description": "Description for Al-Masha's Kitchen" },
-  { "name": "TaiWanese", "img": "taiwanese.png", "description": "Description for TaiWanese" },
-  { "name": "Healthy Soup", "img": "healthy-soup.png", "description": "Description for Healthy Soup" },
-  { "name": "Mixed Rice", "img": "mixed-rice.png", "description": "Description for Mixed Rice" },
-  { "name": "Drinks & Snacks", "img": "drinks.png", "description": "Description for Drinks & Snacks" },
-  { "name": "Ban Mian", "img": "banmian.png", "description": "Description for Ban Mian" }
+  {
+    "name": "Dong Sheng Chicken Rice",
+    "img": "chicken-rice.png",
+    "description": "Hainanese chicken rice specialty."
+  },
+  {
+    "name": "Al-Masha's Kitchen",
+    "img": "indian.png",
+    "description": "Description for Al-Masha's Kitchen"
+  },
+  {
+    "name": "TaiWanese",
+    "img": "taiwanese.png",
+    "description": "Description for TaiWanese"
+  },
+  {
+    "name": "Healthy Soup",
+    "img": "healthy-soup.png",
+    "description": "Description for Healthy Soup"
+  },
+  {
+    "name": "Mixed Rice",
+    "img": "mixed-rice.png",
+    "description": "Description for Mixed Rice"
+  },
+  {
+    "name": "Drinks & Snacks",
+    "img": "drinks.png",
+    "description": "Description for Drinks & Snacks"
+  },
+  {
+    "name": "Ban Mian",
+    "img": "banmian.png",
+    "description": "Description for Ban Mian"
+  }
 ]
