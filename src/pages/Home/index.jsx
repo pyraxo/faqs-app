@@ -43,7 +43,6 @@ const Home = () => {
     setOpen(false);
   };
 
-  // Sample data for table
   const data = [
     {
       column1: '',
