@@ -1,7 +1,9 @@
 import * as React from "react";
-import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
-import { Star, Home, MenuBook } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import Home from "@mui/icons-material/Home";
+import MenuBook from "@mui/icons-material/MenuBook";
+import Star from "@mui/icons-material/Star";
 
 const routes = ["/", "stalls", "starred"];
 

@@ -1,5 +1,4 @@
-import "./App.css";
-import "@fontsource/poppins";
+// import "@fontsource/poppins";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
