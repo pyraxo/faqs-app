@@ -7,12 +7,14 @@ import NavBar from "components/Navbar";
 import Home from "pages/Home";
 import Stalls from "pages/Stalls";
 import Starred from "pages/Starred";
+import StallInfo from "pages/StallInfo";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/stalls" element={<Stalls />} />
+        <Route path="/stalls/:id" element={<StallInfo />} />
         <Route path="/starred" element={<Starred />} />
         <Route exact path="/" element={<Home />} />
       </Routes>
