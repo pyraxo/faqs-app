@@ -45,16 +45,56 @@ const Home = () => {
 
   // Sample data for table
   const data = [
-    { column1: '', column2: 'No. of people', column3: 'Waiting Time (min)' },
-    { column1: 'Chicken Rice', column2: '12', column3: '10' },
-    { column1: 'Indian', column2: '-', column3: '-' },
-    { column1: 'TaiWanese', column2: '7', column3: '10' },
-    { column1: 'Healthy Soup', column2: '4', column3: '3' },
-    { column1: 'Japanese & Korean', column2: '3', column3: '5' },
-    { column1: 'Mixed Rice', column2: '2', column3: '0' },
-    { column1: 'Drinks & Snacks', column2: '1', column3: '0' },
-    { column1: 'Noodles', column2: '20', column3: '35' },
-    { column1: 'Muslim', column2: '7', column3: '15' },
+    {
+      column1: '',
+      column2: 'No. of people',
+      column3: 'Waiting Time (min)'
+    },
+    {
+      column1: 'Chicken Rice',
+      column2: '12',
+      column3: '10'
+    },
+    {
+      column1: 'Indian',
+      column2: '-',
+      column3: '-'
+    },
+    {
+      column1: 'TaiWanese',
+      column2: '7',
+      column3: '10'
+    },
+    {
+      column1: 'Healthy Soup',
+      column2: '4',
+      column3: '3'
+    },
+    {
+      column1: 'Japanese & Korean',
+      column2: '3',
+      column3: '5'
+    },
+    {
+      column1: 'Mixed Rice',
+      column2: '2',
+      column3: '0'
+    },
+    {
+      column1: 'Drinks & Snacks',
+      column2: '1',
+      column3: '0'
+    },
+    {
+      column1: 'Noodles',
+      column2: '20',
+      column3: '35'
+    },
+    {
+      column1: 'Muslim',
+      column2: '7',
+      column3: '15'
+    },
   ];
 
   // Return the Home component
