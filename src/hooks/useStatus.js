@@ -20,7 +20,9 @@ const useStatus = () => {
     setStatus(stallInfos.map((info) => ({ ...info, ...regenerate() })));
   };
 
-  return [status, refreshStatus];
+  const isClosed = (id) => stallInfos[id].isClosed;
+
+  return [status, refreshStatus, isClosed];
 };
 
 export default useStatus;

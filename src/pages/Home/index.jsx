@@ -17,12 +17,12 @@ import {
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import Refresh from "@mui/icons-material/Refresh";
+import Error from "@mui/icons-material/Error";
+import Person from "@mui/icons-material/Person";
+import PersonOutline from "@mui/icons-material/PersonOutline";
+import DoNotDisturb from "@mui/icons-material/DoNotDisturbOn";
 
 import StallLayout from "assets/stall-layout.png";
-import Image1 from "assets/queue-full.png";
-import Image2 from "assets/queue-empty.png";
-import Image3 from "assets/stall-info-icon.png";
-import Image4 from "assets/refresh-icon.png";
 import useStatus from "hooks/useStatus";
 
 export const HomeUserGuide = ({ open, handleClose }) => {
@@ -90,9 +90,7 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <img
-          src={Image1}
-          alt="queue-full"
+        <Person
           style={{
             width: "30px",
             height: "30px",
@@ -102,9 +100,7 @@ const Home = () => {
             zIndex: 1,
           }}
         />
-        <img
-          src={Image2}
-          alt="queue-empty"
+        <PersonOutline
           style={{
             width: "30px",
             height: "30px",
@@ -114,9 +110,7 @@ const Home = () => {
             zIndex: 1,
           }}
         />
-        <img
-          src={Image2}
-          alt="queue-empty"
+        <PersonOutline
           style={{
             width: "30px",
             height: "30px",
@@ -126,9 +120,7 @@ const Home = () => {
             zIndex: 1,
           }}
         />
-        <img
-          src={Image3}
-          alt="stall-info-icon"
+        <Error
           style={{
             width: "30px",
             height: "30px",
@@ -136,11 +128,10 @@ const Home = () => {
             top: "180px",
             right: "217px",
             zIndex: 1,
+            color: "#fead3d",
           }}
         />
-        <img
-          src={Image3}
-          alt="stall-info-icon"
+        <Error
           style={{
             width: "30px",
             height: "30px",
@@ -148,11 +139,10 @@ const Home = () => {
             top: "180px",
             right: "121px",
             zIndex: 1,
+            color: "#fead3d",
           }}
         />
-        <img
-          src={Image3}
-          alt="stall-info-icon"
+        <DoNotDisturb
           style={{
             width: "30px",
             height: "30px",
@@ -160,6 +150,7 @@ const Home = () => {
             top: "110px",
             right: "48px",
             zIndex: 1,
+            color: "grey",
           }}
         />
         <IconButton

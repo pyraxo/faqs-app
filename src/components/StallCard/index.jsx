@@ -7,12 +7,8 @@ import {
   CardContent,
   CardMedia,
   Unstable_Grid2 as Grid,
-  IconButton,
   Typography,
 } from "@mui/material";
-import { yellow } from "@mui/material/colors";
-import StarOutline from "@mui/icons-material/StarOutline";
-import Star from "@mui/icons-material/Star";
 
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";

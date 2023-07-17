@@ -7,9 +7,11 @@ import StallCard from "components/StallCard";
 
 import stalls from "assets/stalls.json";
 import useStarred from "hooks/useStarred";
+import useStatus from "hooks/useStatus";
 
 const Stalls = () => {
   const [toggleStars, isStarred] = useStarred();
+  const [, , isClosed] = useStatus();
   return (
     <>
       <Header title={"Stalls"} />
@@ -29,6 +31,7 @@ const Stalls = () => {
             key={`stall-${id}`}
             toggleStars={toggleStars}
             isStarred={isStarred}
+            isClosed={isClosed(id)}
           />
         ))}
       </Stack>
