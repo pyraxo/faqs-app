@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
-  /* Other imports */
   Typography,
   IconButton,
   CardContent,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
 } from "@mui/material";
 import StarOutline from "@mui/icons-material/StarOutline";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -22,15 +27,15 @@ const StallImage = ({ filepath, alt }) => {
       src={imageSrc}
       alt={alt}
       style={{
-        height: 120,
-        width: 120,
+        height: 70,
+        width: 70,
         borderRadius: "100%",
       }}
     />
   );
 };
 
-const StallCard = ({ stallId }) => {
+const StallCard = ({ stallId, queueLength, waitTime }) => {
   const handleClick = () => {
     // Handle the click on the stall card (if needed)
   };
@@ -51,7 +56,7 @@ const StallCard = ({ stallId }) => {
         width: "100%",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", width: "100%", paddingBottom: '24px', }}>
+      <div style={{ display: "flex", alignItems: "center", width: "100%", paddingBottom: '12px' }}>
         <Typography variant="h6" component="div" style={{ flex: 1 }}>
           <b>{name}</b>
         </Typography>
@@ -59,24 +64,36 @@ const StallCard = ({ stallId }) => {
           <StarOutline />
         </IconButton>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100px",
-        }}
-      >
-        <StallImage filepath={img} alt={name} />
+      <div style={{ display: "flex", alignItems: "center", paddingBottom: '12px' }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70px",
+            paddingRight: '12px',
+          }}
+        >
+          <StallImage
+            filepath={img}
+            alt={name}
+            style={{
+              height: 70,
+              width: 70,
+              borderRadius: "100%",
+              alignItems: "center",
+            }}
+          />
+        </div>
+        <div style={{ flex: 1 }}>
+          <CardContent style={{ padding: 0 }}>
+            <Typography variant="body2" nowrap="true" align="left">
+              {description}
+            </Typography>
+          </CardContent>
+        </div>
       </div>
-      <div style={{ width: "100%" }}>
-        <CardContent style={{ padding: '24px 0' }}>
-          <Typography variant="body2" nowrap="true" align="left">
-            {description}
-          </Typography>
-        </CardContent>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: 12 }}>
         <img
           src={HPB}
           alt="HPB"
@@ -86,12 +103,33 @@ const StallCard = ({ stallId }) => {
           }}
         />
       </div>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: 12 }}>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">No. of Queue</TableCell>
+                <TableCell align="center">Est. Waiting Time</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell align="center">{queueLength}</TableCell>
+                <TableCell align="center">{waitTime} minutes</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </div>
   );
 };
 
 const MenuTabContent = ({ stallId }) => {
-  return <StallCard stallId={stallId} />;
+  // Provide the queueLength and waitTime for the specific stallId
+  const { queueLength, waitTime } = stallInfos[stallId];
+
+  return <StallCard stallId={stallId} queueLength={queueLength} waitTime={waitTime} />;
 };
 
 const StallInfo = () => {
