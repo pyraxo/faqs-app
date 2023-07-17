@@ -18,6 +18,7 @@ import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
 import "./style.css";
+import useStatus from "hooks/useStatus";
 
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
@@ -56,7 +57,14 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
         width: "100%",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", width: "100%", paddingBottom: '12px' }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          paddingBottom: "12px",
+        }}
+      >
         <Typography variant="h6" component="div" style={{ flex: 1 }}>
           <b>{name}</b>
         </Typography>
@@ -64,14 +72,16 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
           <StarOutline />
         </IconButton>
       </div>
-      <div style={{ display: "flex", alignItems: "center", paddingBottom: '12px' }}>
+      <div
+        style={{ display: "flex", alignItems: "center", paddingBottom: "12px" }}
+      >
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "70px",
-            paddingRight: '12px',
+            paddingRight: "12px",
           }}
         >
           <StallImage
@@ -93,7 +103,14 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
           </CardContent>
         </div>
       </div>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 12,
+        }}
+      >
         <img
           src={HPB}
           alt="HPB"
@@ -103,7 +120,14 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
           }}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 12,
+        }}
+      >
         <TableContainer>
           <Table>
             <TableHead>
@@ -125,16 +149,10 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
   );
 };
 
-const MenuTabContent = ({ stallId }) => {
-  // Provide the queueLength and waitTime for the specific stallId
-  const { queueLength, waitTime } = stallInfos[stallId];
-
-  return <StallCard stallId={stallId} queueLength={queueLength} waitTime={waitTime} />;
-};
-
 const StallInfo = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
+  const [status] = useStatus();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -145,12 +163,15 @@ const StallInfo = () => {
       <Header
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Link to="/stalls" style={{ flex: "0 0 auto", textDecoration: "none" }}>
+            <Link
+              to="/stalls"
+              style={{ flex: "0 0 auto", textDecoration: "none" }}
+            >
               <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="back"
-                style={{ flex: "0 0 auto", color: "#FFFFFF"}}
+                style={{ flex: "0 0 auto", color: "#FFFFFF" }}
               >
                 <ArrowBackIosNewIcon />
               </IconButton>
@@ -181,7 +202,11 @@ const StallInfo = () => {
         <div className="tab-content">
           {activeTab === "menu" && (
             <div className="menu-tab">
-              <MenuTabContent stallId={id} />
+              <StallCard
+                stallId={id}
+                queueLength={status[id].queueLength}
+                waitTime={status[id].waitTime}
+              />
             </div>
           )}
           {activeTab === "calculator" && (
