@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfaqs_app=self.webpackChunkfaqs_app||[]).push([[101],{1101:function(p,s,a){p.exports=a.p+"static/media/drinks.850094dd97a5198811d5.png"}}]);
