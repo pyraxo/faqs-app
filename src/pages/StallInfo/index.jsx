@@ -11,7 +11,6 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-import StarOutline from "@mui/icons-material/StarOutline";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 import HPB from "assets/hpb.png";
@@ -19,6 +18,8 @@ import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
 import "./style.css";
 import useStatus from "hooks/useStatus";
+import StarButton from "components/StarButton";
+import useStarred from "hooks/useStarred";
 
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
@@ -37,13 +38,10 @@ const StallImage = ({ filepath, alt }) => {
 };
 
 const StallCard = ({ stallId, queueLength, waitTime }) => {
-  const handleClick = () => {
-    // Handle the click on the stall card (if needed)
-  };
-
+  const [toggleStars, isStarred] = useStarred();
   const handleStarClick = (event) => {
     event.stopPropagation();
-    // Handle the star icon click (if needed)
+    setTimeout(() => toggleStars(stallId), 100);
   };
 
   const { name, img, description } = stallInfos[stallId];
@@ -68,9 +66,10 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
         <Typography variant="h6" component="div" style={{ flex: 1 }}>
           <b>{name}</b>
         </Typography>
-        <IconButton aria-label="star" size="small" onClick={handleStarClick}>
-          <StarOutline />
-        </IconButton>
+        <StarButton
+          handleClick={handleStarClick}
+          isStarred={() => isStarred(stallId)}
+        />
       </div>
       <div
         style={{ display: "flex", alignItems: "center", paddingBottom: "12px" }}

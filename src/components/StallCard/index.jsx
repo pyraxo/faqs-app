@@ -16,6 +16,7 @@ import Star from "@mui/icons-material/Star";
 
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
+import StarButton from "components/StarButton";
 
 export const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
@@ -61,17 +62,10 @@ export default function StallCard({ stallId, toggleStars, isStarred }) {
           </Grid>
           <Grid xs={2} sx={{ display: "flex", justifyContent: "center" }}>
             <CardActions>
-              <IconButton
-                aria-label="star"
-                size="small"
-                onClick={handleStarClick}
-              >
-                {isStarred(stallId) ? (
-                  <Star sx={{ color: yellow[700] }} />
-                ) : (
-                  <StarOutline color="action" />
-                )}
-              </IconButton>
+              <StarButton
+                handleClick={handleStarClick}
+                isStarred={() => isStarred(stallId)}
+              />
             </CardActions>
           </Grid>
           <Grid

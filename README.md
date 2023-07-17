@@ -14,3 +14,11 @@ npm install
 # Start development server
 npm start
 ```
+
+## Deployment
+
+This project is deployed on [Github Pages](https://pyraxo.github.io/faqs-app).
+
+```sh
+npm run deploy
+```
