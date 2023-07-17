@@ -6,8 +6,9 @@ const randomNum = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
 const regenerate = () => {
-  const queueLength = randomNum(1, 10);
-  return { queueLength, waitTime: queueLength * 2 };
+  const isClosed = randomNum(1, 10) === 1;
+  const queueLength = isClosed ? 0 : randomNum(1, 10);
+  return { queueLength, waitTime: queueLength * 2, isClosed };
 };
 
 const useStatus = () => {

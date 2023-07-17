@@ -11,7 +11,7 @@ import StallInfo from "pages/StallInfo";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/faqs-app">
       <Routes>
         <Route path="/stalls" element={<Stalls />} />
         <Route path="/stalls/:id" element={<StallInfo />} />
