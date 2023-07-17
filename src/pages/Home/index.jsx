@@ -16,12 +16,14 @@ import {
   Paper,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
+import Refresh from "@mui/icons-material/Refresh";
 
-import Image from "../../assets/stall-layout.png";
-import Image1 from "../../assets/queue-full.png";
-import Image2 from "../../assets/queue-empty.png";
-import Image3 from "../../assets/stall-info-icon.png";
-import Image4 from "../../assets/refresh-icon.png";
+import StallLayout from "assets/stall-layout.png";
+import Image1 from "assets/queue-full.png";
+import Image2 from "assets/queue-empty.png";
+import Image3 from "assets/stall-info-icon.png";
+import Image4 from "assets/refresh-icon.png";
+import useStatus from "hooks/useStatus";
 
 export const HomeUserGuide = ({ open, handleClose }) => {
   return (
@@ -65,55 +67,8 @@ export const TableComponent = ({ data }) => {
 };
 
 const Home = () => {
-  const data = [
-    {
-      stallName: "Chicken Rice",
-      queueLength: "12",
-      waitTime: "10",
-    },
-    {
-      stallName: "Indian",
-      queueLength: "-",
-      waitTime: "-",
-    },
-    {
-      stallName: "TaiWanese",
-      queueLength: "7",
-      waitTime: "10",
-    },
-    {
-      stallName: "Healthy Soup",
-      queueLength: "4",
-      waitTime: "3",
-    },
-    {
-      stallName: "Japanese & Korean",
-      queueLength: "3",
-      waitTime: "5",
-    },
-    {
-      stallName: "Mixed Rice",
-      queueLength: "2",
-      waitTime: "0",
-    },
-    {
-      stallName: "Drinks & Snacks",
-      queueLength: "1",
-      waitTime: "0",
-    },
-    {
-      stallName: "Noodles",
-      queueLength: "20",
-      waitTime: "35",
-    },
-    {
-      stallName: "Muslim",
-      queueLength: "7",
-      waitTime: "15",
-    },
-  ];
-
   const [open, setOpen] = useState(false);
+  const [status, refreshStatus] = useStatus();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -128,7 +83,7 @@ const Home = () => {
         sx={{
           width: "100%",
           height: "250px",
-          bgcolor: "#E7E7E7",
+          bgcolor: "#86BD55",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -207,17 +162,18 @@ const Home = () => {
             zIndex: 1,
           }}
         />
-        <img
-          src={Image4}
-          alt="refresh-icon"
-          style={{
+        <IconButton
+          sx={{
             width: "20px",
             height: "20px",
             position: "absolute",
             top: "200px",
             right: "20px",
           }}
-        />
+          onClick={refreshStatus}
+        >
+          <Refresh />
+        </IconButton>
 
         <Box
           sx={{
@@ -255,7 +211,7 @@ const Home = () => {
           </Box>
         </Box>
         <img
-          src={Image}
+          src={StallLayout}
           alt="imported"
           style={{ marginTop: "30px", width: "320px", height: "170px" }}
         />
@@ -267,7 +223,7 @@ const Home = () => {
             position: "absolute",
             top: 0,
             right: 0,
-            color: "#86BD55",
+            color: "primary",
           }}
         >
           <InfoIcon />
@@ -284,13 +240,13 @@ const Home = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {status.map((row) => (
               <TableRow
-                key={row.stallName}
+                key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.stallName}
+                  {row.name}
                 </TableCell>
                 <TableCell align="right">{row.queueLength}</TableCell>
                 <TableCell align="right">{row.waitTime}</TableCell>
