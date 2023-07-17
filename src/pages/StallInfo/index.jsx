@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   /* Other imports */
   Typography,
@@ -7,6 +7,7 @@ import {
   CardContent,
 } from "@mui/material";
 import StarOutline from "@mui/icons-material/StarOutline";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
@@ -69,7 +70,7 @@ const StallCard = ({ stallId }) => {
         <StallImage filepath={img} alt={name} />
       </div>
       <div style={{ width: "100%" }}>
-      <CardContent style={{ padding: '24px 0' }}>
+        <CardContent style={{ padding: '24px 0' }}>
           <Typography variant="body2" nowrap="true" align="left">
             {description}
           </Typography>
@@ -95,7 +96,6 @@ const MenuTabContent = ({ stallId }) => {
 
 const StallInfo = () => {
   const { id } = useParams();
-
   const [activeTab, setActiveTab] = useState("menu");
 
   const handleTabChange = (tab) => {
@@ -104,7 +104,25 @@ const StallInfo = () => {
 
   return (
     <>
-      <Header title={stallInfos[id].name} />
+      <Header
+        title={
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Link to="/stalls" style={{ flex: "0 0 auto", textDecoration: "none" }}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="back"
+                style={{ flex: "0 0 auto", color: "#FFFFFF"}}
+              >
+                <ArrowBackIosNewIcon />
+              </IconButton>
+            </Link>
+            <Typography variant="h6" component="div" style={{ flex: 1 }}>
+              {stallInfos[id].name}
+            </Typography>
+          </div>
+        }
+      />
       <div className="tab-container">
         <div className="tabs">
           <button
