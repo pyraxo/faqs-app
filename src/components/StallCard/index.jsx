@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Box,
   Card,
   CardActionArea,
   CardActions,
@@ -9,10 +8,11 @@ import {
   CardMedia,
   Unstable_Grid2 as Grid,
   IconButton,
-  Stack,
   Typography,
 } from "@mui/material";
+import { yellow } from "@mui/material/colors";
 import StarOutline from "@mui/icons-material/StarOutline";
+import Star from "@mui/icons-material/Star";
 
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
@@ -34,14 +34,15 @@ export const StallImage = ({ filepath, alt }) => {
   );
 };
 
-export default function StallCard({ stallId }) {
+export default function StallCard({ stallId, toggleStars, isStarred }) {
   const navigate = useNavigate();
+
   const handleClick = () =>
     setTimeout(() => navigate(`/stalls/${stallId}`), 200);
   const handleStarClick = (event) => {
     event.stopPropagation();
+    setTimeout(() => toggleStars(stallId), 1);
   };
-
   const { name, img, description } = stallInfos[stallId];
 
   return (
@@ -65,7 +66,11 @@ export default function StallCard({ stallId }) {
                 size="small"
                 onClick={handleStarClick}
               >
-                <StarOutline />
+                {isStarred(stallId) ? (
+                  <Star sx={{ color: yellow[700] }} />
+                ) : (
+                  <StarOutline color="action" />
+                )}
               </IconButton>
             </CardActions>
           </Grid>
@@ -82,7 +87,12 @@ export default function StallCard({ stallId }) {
           </Grid>
           <Grid xs={7}>
             <CardContent>
-              <Typography variant="body2" nowrap="true" align="left">
+              <Typography
+                variant="body2"
+                nowrap="true"
+                align="justify"
+                mt="-15px"
+              >
                 {description}
               </Typography>
             </CardContent>
