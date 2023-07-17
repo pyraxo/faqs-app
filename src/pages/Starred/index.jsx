@@ -1,11 +1,13 @@
 import "./style.css";
 import React from "react";
 import { Stack } from "@mui/material";
+
 import Header from "components/Header";
-import useLocalStorage from "hooks/useLocalStorage";
+import useStarred from "hooks/useStarred";
+import StallCard from "components/StallCard";
 
 export default function Starred() {
-  const [stars, setStars] = useLocalStorage("starred", []);
+  const [toggleStars, isStarred, stars] = useStarred();
   return (
     <>
       <Header title={"Favourited Stalls"} />
@@ -17,7 +19,16 @@ export default function Starred() {
         mt={2}
         spacing={3}
         pb={10}
-      ></Stack>
+      >
+        {stars.map((id) => (
+          <StallCard
+            stallId={id}
+            key={`stall-${id}`}
+            toggleStars={toggleStars}
+            isStarred={isStarred}
+          />
+        ))}
+      </Stack>
     </>
   );
 }
