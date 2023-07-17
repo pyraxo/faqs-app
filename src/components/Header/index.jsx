@@ -15,18 +15,16 @@ export default function Header({ title }) {
           >
             {title}
           </Typography>
-          <>
-            <IconButton
-              size="large"
-              aria-label="info guide"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <Info />
-            </IconButton>
-          </>
+          <IconButton
+            size="large"
+            aria-label="info guide"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <Info />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>

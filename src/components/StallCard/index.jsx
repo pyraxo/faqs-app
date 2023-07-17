@@ -41,7 +41,7 @@ export default function StallCard({ stallId, toggleStars, isStarred }) {
     setTimeout(() => navigate(`/stalls/${stallId}`), 200);
   const handleStarClick = (event) => {
     event.stopPropagation();
-    setTimeout(() => toggleStars(stallId), 1);
+    setTimeout(() => toggleStars(stallId), 100);
   };
   const { name, img, description } = stallInfos[stallId];
 
