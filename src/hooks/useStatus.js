@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import stallInfos from "assets/stalls.json";
+import useLocalStorage from "./useLocalStorage";
 
 const randomNum = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
@@ -12,7 +11,8 @@ const regenerate = () => {
 };
 
 const useStatus = () => {
-  const [status, setStatus] = useState(
+  const [status, setStatus] = useLocalStorage(
+    "statuses",
     stallInfos.map(({ name }) => ({ name, ...regenerate() }))
   );
 
@@ -20,7 +20,7 @@ const useStatus = () => {
     setStatus(stallInfos.map((info) => ({ ...info, ...regenerate() })));
   };
 
-  const isClosed = (id) => stallInfos[id].isClosed;
+  const isClosed = (id) => status[id].isClosed;
 
   return [status, refreshStatus, isClosed];
 };
