@@ -33,7 +33,7 @@ export const HomeUserGuide = ({ open, handleClose }) => {
       PaperProps={{
         sx: {
           width: "83%",
-          height: "50%",
+          height: "70%",
           position: "fixed",
           top: 0,
           right: 0,
@@ -45,7 +45,54 @@ export const HomeUserGuide = ({ open, handleClose }) => {
       >
         User Guide
       </DialogTitle>
-      <DialogContent sx={{ bgcolor: "#B1D490" }}>asdf</DialogContent>
+      <DialogContent
+        sx={{
+          bgcolor: "#B1D490"
+          }}
+      >
+        <u>
+          Canteen Traffic
+        </u>
+        <img>
+          {/* placeholder */}
+        </img>
+        <br/>
+        This feature allows you to assess the current crowd level in the canteen.
+        <ul>
+          <li>
+            Very Crowded
+          </li>
+          <li>
+            Normal
+          </li>
+          <li>
+            Not Crowded
+          </li>
+        </ul>
+        <u>
+          Queue Advisory
+        </u>
+        <br/>
+        <img>
+          {/* placeholder */}
+        </img>
+        This indicator notifies users about potentially long queues at a particular stall.
+        <img>
+          {/* placeholder */}
+        </img>
+        <br/>
+        This indicator notifies users about potentially closed stalls.
+        <u>
+        <br/>  
+        <br/>
+          Refresh Button
+        </u>
+        <img>
+          {/* placeholder */}
+        </img>
+        <br/>
+        To get the latest stall queue information, simply click the refresh button.
+      </DialogContent>
     </Dialog>
   );
 };
