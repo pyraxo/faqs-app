@@ -26,19 +26,6 @@ import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
 import StarButton from "components/StarButton";
 
-const rows = [
-  { item: 'Meat', unit_price: '$1.00', quantity: 2 },
-  { item: 'Vegetable', unit_price: '$0.50', quantity: 1 },
-  { item: 'Extra rice/noodles', unit_price: '$0.50', quantity: 1 },
-];
-const handlePlusClick = (item) => {
-  console.log(`Plus button clicked for item: ${item}`);
-};
-
-const handleMinusClick = (item) => {
-  console.log(`Minus button clicked for item: ${item}`);
-};
-
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
   import(`assets/${filepath}`).then((module) => setImageSrc(module.default));
@@ -175,6 +162,28 @@ const StallInfo = () => {
     setActiveTab(tab);
   };
 
+  const [items, setItems] = useState([
+    { item: 'Meat', unit_price: '$1.00', quantity: 0 },
+    { item: 'Vegetable', unit_price: '$0.50', quantity: 0 },
+    { item: 'Extra rice/noodles', unit_price: '$0.50', quantity: 0 },
+  ]);
+
+  const handlePlusClick = (itemName) => {
+    setItems(prevItems => 
+      prevItems.map(item => 
+        item.item === itemName ? {...item, quantity: item.quantity + 1} : item
+      )
+    );
+  }
+
+  const handleMinusClick = (itemName) => {
+    setItems(prevItems => 
+      prevItems.map(item => 
+        item.item === itemName && item.quantity > 0 ? {...item, quantity: item.quantity - 1} : item
+      )
+    );
+  }
+
   return (
     <>
       <Header
@@ -239,25 +248,25 @@ const StallInfo = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows.map((row) => (
+                      {items.map((row) => (
                         <TableRow key={row.item}>
-                          <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                            {row.item}
-                          </TableCell>
-                          <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
-                          <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                              <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
-                                <RemoveIcon />
-                              </IconButton>
-                              {row.quantity}
-                              <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
-                                <AddIcon />
-                              </IconButton>
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                            <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
+                              {row.item}
+                            </TableCell>
+                            <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
+                            <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
+                              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
+                                <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
+                                  <RemoveIcon />
+                                </IconButton>
+                                {row.quantity}
+                                <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
+                                  <AddIcon />
+                                </IconButton>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
