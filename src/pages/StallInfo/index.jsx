@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-// import ReactDOM from 'react-dom';
 import { useParams, Link } from "react-router-dom";
+import useStatus from "hooks/useStatus";
+import useStarred from "hooks/useStarred";
+// import useCalculator from "hooks/useCalculator";
+
 import {
   Typography,
   IconButton,
@@ -17,14 +20,11 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+import "./style.css";
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
-import "./style.css";
-import useStatus from "hooks/useStatus";
 import StarButton from "components/StarButton";
-import useStarred from "hooks/useStarred";
-// import useCalculator from "hooks/useCalculator";
 
 const rows = [
   { item: 'Meat', unit_price: '$1.00', quantity: 2 },
@@ -38,10 +38,6 @@ const handlePlusClick = (item) => {
 const handleMinusClick = (item) => {
   console.log(`Minus button clicked for item: ${item}`);
 };
-
-// function BasicTable() {
-//   const { data, incrementQuantity, decrementQuantity } = useCalculator(initialData);
-// }
 
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
@@ -233,94 +229,38 @@ const StallInfo = () => {
           {activeTab === "calculator" && (
             <div className="calculator-tab">
               <p>
-                {/* <TableContainer component={Paper} style={{ backgroundColor: '#FBD870' }}>
-                    <Table sx={{ minWidth: 300 }} aria-label="simple table">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Item</TableCell>
-                          <TableCell style={{ fontWeight: 800, borderBottom: '1px solid black' }}>Unit Price</TableCell>
-                          <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Qty</TableCell>
+                <TableContainer component={Paper} style={{ backgroundColor: '#FBD870' }}>
+                  <Table sx={{ minWidth: 300 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Item</TableCell>
+                        <TableCell style={{ fontWeight: 800, borderBottom: '1px solid black' }}>Unit Price</TableCell>
+                        <TableCell align="center" style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Qty</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.item}>
+                          <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
+                            {row.item}
+                          </TableCell>
+                          <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
+                          <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
+                            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
+                              <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
+                                <RemoveIcon />
+                              </IconButton>
+                              {row.quantity}
+                              <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
+                                <AddIcon />
+                              </IconButton>
+                            </div>
+                          </TableCell>
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.item}>
-                            <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                              {row.item}
-                            </TableCell>
-                            <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
-                            <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                                {row.quantity}
-                                <IconButton onClick={() => handleClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
-                                  <AddIcon />
-                                </IconButton>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer> */}
-
-                  <TableContainer component={Paper} style={{ backgroundColor: '#FBD870' }}>
-                        <Table sx={{ minWidth: 300 }} aria-label="simple table">
-                          <TableHead>
-                            <TableRow>
-                              <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Item</TableCell>
-                              <TableCell style={{ fontWeight: 800, borderBottom: '1px solid black' }}>Unit Price</TableCell>
-                              <TableCell align="center" style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Qty</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {rows.map((row) => (
-                              <TableRow key={row.item}>
-                                <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                                  {row.item}
-                                </TableCell>
-                                <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
-                                <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                                  <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                                    <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
-                                      <RemoveIcon />
-                                    </IconButton>
-                                    {row.quantity}
-                                    <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
-                                      <AddIcon />
-                                    </IconButton>
-                                  </div>
-                                </TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-
-                {/* <TableContainer component={Paper}>
-                      <Table sx={{ minWidth: 300 }} aria-label="simple table">
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Item</TableCell>
-                            <TableCell>Unit Price</TableCell>
-                            <TableCell>Quantity</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {data.map((row, index) => (
-                            <TableRow key={row.item}>
-                              <TableCell>{row.item}</TableCell>
-                              <TableCell>{row.unit_price}</TableCell>
-                              <TableCell>
-                                <button onClick={() => decrementQuantity(index)}>-</button>
-                                {row.quantity}
-                                <button onClick={() => incrementQuantity(index)}>+</button>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer> */}
-
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </p>
             </div>
           )}
@@ -330,5 +270,4 @@ const StallInfo = () => {
   );
 };
 
-// ReactDOM.render(<BasicTable />, document.getElementById('root'));
 export default StallInfo;
