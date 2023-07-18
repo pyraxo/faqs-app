@@ -14,6 +14,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Container,
   Paper,
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -42,7 +43,7 @@ const StallImage = ({ filepath, alt }) => {
   );
 };
 
-const StallCard = ({ stallId, queueLength, waitTime }) => {
+const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
   const [toggleStars, isStarred] = useStarred();
   const handleStarClick = (event) => {
     event.stopPropagation();
@@ -132,31 +133,39 @@ const StallCard = ({ stallId, queueLength, waitTime }) => {
           paddingTop: 12,
         }}
       >
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">No. of Queue</TableCell>
-                <TableCell align="center">Est. Waiting Time</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell align="center">{queueLength}</TableCell>
-                <TableCell align="center">{waitTime} minutes</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {isClosed ? (
+          <Container>
+            <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+              Closed
+            </Typography>
+          </Container>
+        ) : (
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">No. of Queue</TableCell>
+                  <TableCell align="center">Est. Waiting Time</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align="center">{queueLength}</TableCell>
+                  <TableCell align="center">{waitTime} minutes</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
       </div>
     </div>
   );
 };
 
-const StallInfo = () => {
+export default function StallInfo() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
-  const [status] = useStatus();
+  const [status, , isClosed] = useStatus();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -228,45 +237,95 @@ const StallInfo = () => {
         <div className="tab-content">
           {activeTab === "menu" && (
             <div className="menu-tab">
-              <StallCard
+              <StallInfoContent
                 stallId={id}
                 queueLength={status[id].queueLength}
                 waitTime={status[id].waitTime}
+                isClosed={isClosed(id)}
               />
             </div>
           )}
           {activeTab === "calculator" && (
             <div className="calculator-tab">
               <p>
-                <TableContainer component={Paper} style={{ backgroundColor: '#FBD870' }}>
+                <TableContainer
+                  component={Paper}
+                  style={{ backgroundColor: "#FBD870" }}
+                >
                   <Table sx={{ minWidth: 300 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Item</TableCell>
-                        <TableCell style={{ fontWeight: 800, borderBottom: '1px solid black' }}>Unit Price</TableCell>
-                        <TableCell align="center" style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Qty</TableCell>
+                        <TableCell
+                          style={{
+                            fontWeight: 800,
+                            padding: "20px",
+                            borderBottom: "1px solid black",
+                          }}
+                        >
+                          Item
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            fontWeight: 800,
+                            borderBottom: "1px solid black",
+                          }}
+                        >
+                          Unit Price
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          style={{
+                            fontWeight: 800,
+                            padding: "20px",
+                            borderBottom: "1px solid black",
+                          }}
+                        >
+                          Qty
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {items.map((row) => (
                         <TableRow key={row.item}>
-                            <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                              {row.item}
-                            </TableCell>
-                            <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
-                            <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>
-                              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                                <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
-                                  <RemoveIcon />
-                                </IconButton>
-                                {row.quantity}
-                                <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
-                                  <AddIcon />
-                                </IconButton>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{
+                              padding: '20px',
+                              borderBottom: '1px solid black'
+                              }}>
+                            {row.item}
+                          </TableCell>
+                          <TableCell
+                            style={{ borderBottom: '1px solid black' }}
+                            >
+                              {row.unit_price}
+                          </TableCell>
+                          <TableCell
+                            align="center"
+                            style={{
+                              padding: '20px',
+                              borderBottom: '1px solid black'
+                              }}
+                          >
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'flex-start'
+                                }}
+                            >
+                              <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
+                                <RemoveIcon />
+                              </IconButton>
+                              {row.quantity}
+                              <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
+                                <AddIcon />
+                              </IconButton>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
@@ -277,6 +336,4 @@ const StallInfo = () => {
       </div>
     </>
   );
-};
-
-export default StallInfo;
+}

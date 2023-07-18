@@ -9,6 +9,8 @@ import {
   Unstable_Grid2 as Grid,
   Typography,
 } from "@mui/material";
+import { grey } from "@mui/material/colors";
+import DoNotDisturb from "@mui/icons-material/DoNotDisturb";
 
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
@@ -31,7 +33,12 @@ export const StallImage = ({ filepath, alt }) => {
   );
 };
 
-export default function StallCard({ stallId, toggleStars, isStarred }) {
+export default function StallCard({
+  stallId,
+  toggleStars,
+  isStarred,
+  isClosed,
+}) {
   const navigate = useNavigate();
 
   const handleClick = () =>
@@ -41,9 +48,16 @@ export default function StallCard({ stallId, toggleStars, isStarred }) {
     setTimeout(() => toggleStars(stallId), 100);
   };
   const { name, img, description } = stallInfos[stallId];
+  console.log(isClosed);
 
   return (
-    <Card sx={{ display: "flex", width: "90%" }}>
+    <Card
+      sx={{
+        display: "flex",
+        width: "90%",
+        backgroundColor: isClosed ? grey[300] : "white",
+      }}
+    >
       <CardActionArea onClick={handleClick}>
         <Grid width="100%" container>
           <Grid
@@ -73,7 +87,21 @@ export default function StallCard({ stallId, toggleStars, isStarred }) {
               height: "80px",
             }}
           >
-            <StallImage filepath={img} alt={name} />
+            {isClosed ? (
+              <>
+                <StallImage filepath={img} alt={name} />
+                <DoNotDisturb
+                  sx={{
+                    color: grey[800],
+                    height: 80,
+                    width: 80,
+                    position: "absolute",
+                  }}
+                />
+              </>
+            ) : (
+              <StallImage filepath={img} alt={name} />
+            )}
           </Grid>
           <Grid xs={7}>
             <CardContent>
