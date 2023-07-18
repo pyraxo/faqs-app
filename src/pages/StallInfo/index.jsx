@@ -264,6 +264,7 @@ export default function StallInfo() {
                           Unit Price
                         </TableCell>
                         <TableCell
+                          align="center"
                           style={{
                             fontWeight: 800,
                             padding: "20px",
@@ -299,7 +300,31 @@ export default function StallInfo() {
                               borderBottom: "1px solid black",
                             }}
                           >
-                            {row.quantity}
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "flex-start",
+                              }}
+                            >
+                              <IconButton
+                                onClick={() => handleMinusClick(row.item)}
+                                size="small"
+                                edge="end"
+                                style={{ marginRight: "8px" }}
+                              >
+                                <RemoveIcon />
+                              </IconButton>
+                              {row.quantity}
+                              <IconButton
+                                onClick={() => handlePlusClick(row.item)}
+                                size="small"
+                                edge="end"
+                                style={{ marginLeft: "8px" }}
+                              >
+                                <AddIcon />
+                              </IconButton>
+                            </div>
                           </TableCell>
                         </TableRow>
                       ))}
