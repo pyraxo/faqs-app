@@ -52,6 +52,8 @@ const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
 
   const { name, img, description } = stallInfos[stallId];
 
+  const menu = stallInfos[stallId].menu;
+
   return (
     <div
       style={{
@@ -142,13 +144,11 @@ const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
         ) : (
           <TableContainer>
             <Table>
-              <TableHead>
+              <TableBody>
                 <TableRow>
                   <TableCell align="center">No. of Queue</TableCell>
                   <TableCell align="center">Est. Waiting Time</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
                 <TableRow>
                   <TableCell align="center">{queueLength}</TableCell>
                   <TableCell align="center">{waitTime} minutes</TableCell>
@@ -158,6 +158,30 @@ const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
           </TableContainer>
         )}
       </div>
+      <Typography
+        variant="subtitle1"
+        component="div"
+        style={{
+          fontWeight: "bold",
+          textDecoration: "underline",
+          textAlign: "left",
+          paddingTop: "12px",
+        }}
+      >
+        Menu
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            {menu.map((menuItem) => (
+              <TableRow key={menuItem.item}>
+                <TableCell align="left">{menuItem.item}</TableCell>
+                <TableCell align="left">{menuItem.price}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
@@ -172,22 +196,22 @@ export default function StallInfo() {
   };
 
   const [items, setItems] = useState([
+    { item: 'Rice', unit_price: '$1.50', quantity: 0 },
     { item: 'Meat', unit_price: '$1.00', quantity: 0 },
     { item: 'Vegetable', unit_price: '$0.50', quantity: 0 },
-    { item: 'Extra rice/noodles', unit_price: '$0.50', quantity: 0 },
   ]);
 
   const handlePlusClick = (itemName) => {
-    setItems(prevItems => 
-      prevItems.map(item => 
+    setItems(prevItems =>
+      prevItems.map(item =>
         item.item === itemName ? {...item, quantity: item.quantity + 1} : item
       )
     );
   }
 
   const handleMinusClick = (itemName) => {
-    setItems(prevItems => 
-      prevItems.map(item => 
+    setItems(prevItems =>
+      prevItems.map(item =>
         item.item === itemName && item.quantity > 0 ? {...item, quantity: item.quantity - 1} : item
       )
     );
@@ -335,7 +359,7 @@ export default function StallInfo() {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                <div className="total-price-container"> 
+                <div className="total-price-container">
                   <Typography variant="h6">
                     Total Price: ${computeTotalPrice().toFixed(2)}
                   </Typography>

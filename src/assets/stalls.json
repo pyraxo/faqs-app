@@ -2,7 +2,11 @@
   {
     "name": "Dong Sheng Chicken Rice",
     "img": "chicken-rice.png",
-    "description": "Hainanese chicken rice specialty."
+    "description": "Hainanese chicken rice specialty.",
+    "menu": [
+      { "item": "Roasted Chicken Rice", "price": "$3.50" },
+      { "item": "Steamed Chicken Rice", "price": "$3.50" }
+    ]
   },
   {
     "name": "Al-Masha's Kitchen",
@@ -22,7 +26,12 @@
   {
     "name": "Mixed Rice",
     "img": "mixed-rice.png",
-    "description": "Delightful assortment of flavorful dishes, allowing you to have a diverse range of choices."
+    "description": "Delightful assortment of flavorful dishes, allowing you to have a diverse range of choices.",
+    "menu": [
+      { "item": "Rice", "price": "$1.50" },
+      { "item": "Meat", "price": "$1.00" },
+      { "item": "Vegetable", "price": "$0.50" }
+    ]
   },
   {
     "name": "Drinks & Snacks",
