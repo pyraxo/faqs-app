@@ -1,6 +1,6 @@
 import "./style.css";
 import React from "react";
-import Stack from "@mui/material/Stack";
+import { Stack, Typography } from "@mui/material";
 
 import Header from "components/Header";
 import StallCard from "components/StallCard";
@@ -9,12 +9,28 @@ import stalls from "assets/stalls.json";
 import useStarred from "hooks/useStarred";
 import useStatus from "hooks/useStatus";
 
+const userGuideContent = (
+  <>
+    <Typography variant="body1">
+      <u>View Stall Details</u>
+      <br />
+      Tap on any stall to access its detailed information.
+      <br />
+      <br />
+      <u>Mark as Favorite</u>
+      <br />
+      Press the star button to add a stall to your favorites list.
+    </Typography>
+  </>
+);
+
 const Stalls = () => {
   const [toggleStars, isStarred] = useStarred();
   const [, , isClosed] = useStatus();
   return (
     <>
-      <Header title={"Stalls"} />
+      <Header title={"Stalls"} userGuideContent={userGuideContent} />
+      {/* <div className="stalls"></div> */}
       <Stack
         display="flex"
         justifyContent="center"

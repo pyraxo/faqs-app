@@ -224,10 +224,26 @@ export default function StallInfo() {
       .map((item) => parseFloat(item.unit_price.slice(1)) * item.quantity)
       .reduce((a, b) => a + b, 0);
   };
+  
+  const userGuideContent = (
+    <>
+      <Typography variant="body1">
+        <u>View Stall Details</u>
+        <br />
+        Tap on any stall to access its detailed information.
+        <br />
+        <br />
+        <u>Mark as Favorite</u>
+        <br />
+        Press the star button to add a stall to your favorites list.
+      </Typography>
+    </>
+  );
 
   return (
     <>
       <Header
+        userGuideContent={userGuideContent}
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link
