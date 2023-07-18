@@ -15,7 +15,6 @@ const Stalls = () => {
   return (
     <>
       <Header title={"Stalls"} />
-      {/* <div className="stalls"></div> */}
       <Stack
         display="flex"
         justifyContent="center"

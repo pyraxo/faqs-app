@@ -48,7 +48,6 @@ export default function StallCard({
     setTimeout(() => toggleStars(stallId), 100);
   };
   const { name, img, description } = stallInfos[stallId];
-  console.log(isClosed);
 
   return (
     <Card

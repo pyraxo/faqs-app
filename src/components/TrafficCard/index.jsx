@@ -1,6 +1,7 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { Box, Unstable_Grid2 as Grid, Typography } from "@mui/material";
+import Person from "@mui/icons-material/Person";
+import PersonOutline from "@mui/icons-material/PersonOutline";
 
 export default function TrafficCard() {
   return (
@@ -13,31 +14,42 @@ export default function TrafficCard() {
         right: "120px",
         bgcolor: "#F8F8F8",
         borderRadius: "16px",
-        p: 1,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Box sx={{ my: 1 }}>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
-        >
-          Canteen Traffic
-        </Typography>
-      </Box>
-      <Box sx={{ my: 1 }}>
-        <Typography
-          variant="body1"
-          component="div"
-          sx={{ ml: 2, textAlign: "center" }}
-        >
-          Not crowded
-        </Typography>
-      </Box>
+      <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center" }}>
+        Canteen Traffic
+      </Typography>
+      <Grid container>
+        <Person
+          style={{
+            width: "30px",
+            height: "30px",
+            zIndex: 1,
+          }}
+        />
+        <PersonOutline
+          style={{
+            width: "30px",
+            height: "30px",
+            zIndex: 1,
+          }}
+        />
+        <PersonOutline
+          style={{
+            width: "30px",
+            height: "30px",
+            zIndex: 1,
+          }}
+        />
+      </Grid>
+
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        Not crowded
+      </Typography>
     </Box>
   );
 }

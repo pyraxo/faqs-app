@@ -17,8 +17,6 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import Refresh from "@mui/icons-material/Refresh";
 import Error from "@mui/icons-material/Error";
-import Person from "@mui/icons-material/Person";
-import PersonOutline from "@mui/icons-material/PersonOutline";
 import DoNotDisturb from "@mui/icons-material/DoNotDisturbOn";
 
 import StallLayout from "assets/stall-layout.png";
@@ -116,13 +114,8 @@ export const TableComponent = ({ data }) => {
 const Home = () => {
   const [open, setOpen] = useState(false);
   const [status, refreshStatus] = useStatus();
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -137,36 +130,6 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <Person
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "87px",
-            right: "270px",
-            zIndex: 1,
-          }}
-        />
-        <PersonOutline
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "87px",
-            right: "220px",
-            zIndex: 1,
-          }}
-        />
-        <PersonOutline
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "87px",
-            right: "170px",
-            zIndex: 1,
-          }}
-        />
         <Error
           style={{
             width: "30px",
@@ -234,34 +197,33 @@ const Home = () => {
         </IconButton>
       </Box>
       <HomeUserGuide open={open} handleClose={handleClose} />
-      <TableContainer component={Paper}>
-        <Table sx={{ width: "100%" }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Stall</TableCell>
-              <TableCell align="right">No. of People</TableCell>
-              <TableCell align="right">Waiting Time&nbsp;(min)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {status.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.queueLength}</TableCell>
-                <TableCell align="right">{row.waitTime}</TableCell>
+      <Box>
+        <TableContainer component={Paper}>
+          <Table sx={{ width: "100%" }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Stall</TableCell>
+                <TableCell align="right">No. of People</TableCell>
+                <TableCell align="right">Waiting Time&nbsp;(min)</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {/* <div className="queueTable" style={{ height: "20%", overflow: "scroll" }}>
-        <TableComponent data={data} />
-      </div> */}
+            </TableHead>
+            <TableBody>
+              {status.map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.queueLength}</TableCell>
+                  <TableCell align="right">{row.waitTime}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </>
   );
 };

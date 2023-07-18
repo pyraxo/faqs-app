@@ -52,7 +52,7 @@ const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
 
   const { name, img, description } = stallInfos[stallId];
 
-  const menu = stallInfos[stallId].menu;
+  const menu = stallInfos[stallId].menu || [];
 
   return (
     <div
@@ -196,31 +196,33 @@ export default function StallInfo() {
   };
 
   const [items, setItems] = useState([
-    { item: 'Rice', unit_price: '$1.50', quantity: 0 },
-    { item: 'Meat', unit_price: '$1.00', quantity: 0 },
-    { item: 'Vegetable', unit_price: '$0.50', quantity: 0 },
+    { item: "Rice", unit_price: "$1.50", quantity: 0 },
+    { item: "Meat", unit_price: "$1.00", quantity: 0 },
+    { item: "Vegetable", unit_price: "$0.50", quantity: 0 },
   ]);
 
   const handlePlusClick = (itemName) => {
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item.item === itemName ? {...item, quantity: item.quantity + 1} : item
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.item === itemName ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
-  }
+  };
 
   const handleMinusClick = (itemName) => {
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item.item === itemName && item.quantity > 0 ? {...item, quantity: item.quantity - 1} : item
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.item === itemName && item.quantity > 0
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
       )
     );
-  }
+  };
 
   const computeTotalPrice = () => {
     return items
-      .map(item => parseFloat(item.unit_price.slice(1)) * item.quantity)
-      .reduce((a, b) => a + b, 0)
+      .map((item) => parseFloat(item.unit_price.slice(1)) * item.quantity)
+      .reduce((a, b) => a + b, 0);
   };
 
   return (
@@ -321,35 +323,46 @@ export default function StallInfo() {
                             component="th"
                             scope="row"
                             style={{
-                              padding: '20px',
-                              borderBottom: '1px solid black'
-                              }}>
+                              padding: "20px",
+                              borderBottom: "1px solid black",
+                            }}
+                          >
                             {row.item}
                           </TableCell>
                           <TableCell
-                            style={{ borderBottom: '1px solid black' }}
-                            >
-                              {row.unit_price}
+                            style={{ borderBottom: "1px solid black" }}
+                          >
+                            {row.unit_price}
                           </TableCell>
                           <TableCell
                             align="center"
                             style={{
-                              padding: '20px',
-                              borderBottom: '1px solid black'
-                              }}
+                              padding: "20px",
+                              borderBottom: "1px solid black",
+                            }}
                           >
                             <div
                               style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'flex-start'
-                                }}
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "flex-start",
+                              }}
                             >
-                              <IconButton onClick={() => handleMinusClick(row.item)} size="small" edge="end" style={{marginRight: '8px'}}>
+                              <IconButton
+                                onClick={() => handleMinusClick(row.item)}
+                                size="small"
+                                edge="end"
+                                style={{ marginRight: "8px" }}
+                              >
                                 <RemoveIcon />
                               </IconButton>
                               {row.quantity}
-                              <IconButton onClick={() => handlePlusClick(row.item)} size="small" edge="end" style={{marginLeft: '8px'}}>
+                              <IconButton
+                                onClick={() => handlePlusClick(row.item)}
+                                size="small"
+                                edge="end"
+                                style={{ marginLeft: "8px" }}
+                              >
                                 <AddIcon />
                               </IconButton>
                             </div>
