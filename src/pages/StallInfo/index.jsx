@@ -10,6 +10,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Paper,
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
@@ -20,6 +21,17 @@ import "./style.css";
 import useStatus from "hooks/useStatus";
 import StarButton from "components/StarButton";
 import useStarred from "hooks/useStarred";
+// import useCalculator from "hooks/useCalculator";
+
+function createData(item, unit_price, quantity) {
+  return { item, unit_price, quantity };
+}
+
+const rows = [
+  createData('Meat', '$1.00', 6.0),
+  createData('Vegetable', '$0.50', 9.0),
+  createData('Extra rice/noodles', '$0.50', 16.0),
+];
 
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
@@ -210,10 +222,31 @@ const StallInfo = () => {
           )}
           {activeTab === "calculator" && (
             <div className="calculator-tab">
-              <h3>Calculator</h3>
               <p>
-                Placeholder content for the calculator. Add your calculator
-                component here.
+                <TableContainer component={Paper} style={{ backgroundColor: '#FBD870' }}>
+                  <Table sx={{ minWidth: 300 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Item</TableCell>
+                        <TableCell style={{ fontWeight: 800, borderBottom: '1px solid black' }}>Unit Price</TableCell>
+                        <TableCell style={{ fontWeight: 800, padding: '20px', borderBottom: '1px solid black' }}>Qty</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow
+                          key={row.item}
+                        >
+                          <TableCell component="th" scope="row" style={{ padding: '20px', borderBottom: '1px solid black' }}>
+                            {row.item}
+                          </TableCell>
+                          <TableCell style={{ borderBottom: '1px solid black' }}>{row.unit_price}</TableCell>
+                          <TableCell align="center" style={{ padding: '20px', borderBottom: '1px solid black' }}>{row.quantity}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </p>
             </div>
           )}
