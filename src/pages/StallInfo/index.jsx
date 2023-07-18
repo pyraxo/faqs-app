@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import useStatus from "hooks/useStatus";
+import useStarred from "hooks/useStarred";
+// import useCalculator from "hooks/useCalculator";
+
 import {
   Typography,
   IconButton,
@@ -14,25 +18,27 @@ import {
   Paper,
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
+import "./style.css";
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
-import "./style.css";
-import useStatus from "hooks/useStatus";
 import StarButton from "components/StarButton";
-import useStarred from "hooks/useStarred";
-// import useCalculator from "hooks/useCalculator";
-
-function createData(item, unit_price, quantity) {
-  return { item, unit_price, quantity };
-}
 
 const rows = [
-  createData("Meat", "$1.00", 6.0),
-  createData("Vegetable", "$0.50", 9.0),
-  createData("Extra rice/noodles", "$0.50", 16.0),
+  { item: "Meat", unit_price: "$1.00", quantity: 2 },
+  { item: "Vegetable", unit_price: "$0.50", quantity: 1 },
+  { item: "Extra rice/noodles", unit_price: "$0.50", quantity: 1 },
 ];
+const handlePlusClick = (item) => {
+  console.log(`Plus button clicked for item: ${item}`);
+};
+
+const handleMinusClick = (item) => {
+  console.log(`Minus button clicked for item: ${item}`);
+};
 
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
