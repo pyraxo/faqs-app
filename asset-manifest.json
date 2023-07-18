@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/faqs-app/static/css/main.e0bd2774.css",
-    "main.js": "/faqs-app/static/js/main.7f3dd4fa.js",
+    "main.css": "/faqs-app/static/css/main.bf2bc190.css",
+    "main.js": "/faqs-app/static/js/main.548f4e3e.js",
     "static/js/186.4ae86a2a.chunk.js": "/faqs-app/static/js/186.4ae86a2a.chunk.js",
     "static/js/506.a81b805c.chunk.js": "/faqs-app/static/js/506.a81b805c.chunk.js",
     "static/js/101.997b3682.chunk.js": "/faqs-app/static/js/101.997b3682.chunk.js",
@@ -20,12 +20,12 @@
     "static/media/healthy-soup.png": "/faqs-app/static/media/healthy-soup.853e0e048c32769a4c9f.png",
     "static/media/drinks.png": "/faqs-app/static/media/drinks.850094dd97a5198811d5.png",
     "index.html": "/faqs-app/index.html",
-    "main.e0bd2774.css.map": "/faqs-app/static/css/main.e0bd2774.css.map",
-    "main.7f3dd4fa.js.map": "/faqs-app/static/js/main.7f3dd4fa.js.map",
+    "main.bf2bc190.css.map": "/faqs-app/static/css/main.bf2bc190.css.map",
+    "main.548f4e3e.js.map": "/faqs-app/static/js/main.548f4e3e.js.map",
     "787.46d26450.chunk.js.map": "/faqs-app/static/js/787.46d26450.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0bd2774.css",
-    "static/js/main.7f3dd4fa.js"
+    "static/css/main.bf2bc190.css",
+    "static/js/main.548f4e3e.js"
   ]
 }
