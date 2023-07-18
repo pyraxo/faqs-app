@@ -193,6 +193,12 @@ export default function StallInfo() {
     );
   }
 
+  const computeTotalPrice = () => {
+    return items
+      .map(item => parseFloat(item.unit_price.slice(1)) * item.quantity)
+      .reduce((a, b) => a + b, 0)
+  };
+
   return (
     <>
       <Header
@@ -329,6 +335,11 @@ export default function StallInfo() {
                     </TableBody>
                   </Table>
                 </TableContainer>
+                <div className="total-price-container"> 
+                  <Typography variant="h6">
+                    Total Price: ${computeTotalPrice().toFixed(2)}
+                  </Typography>
+                </div>
               </p>
             </div>
           )}
