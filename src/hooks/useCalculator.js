@@ -1,30 +1,27 @@
-// import React, { useState } from 'react';
+import { useState } from 'react';
 
-// const TAX_RATE = 0.07;
+const useCalculator = (initialData) => {
+  const [data, setData] = useState(initialData);
 
-// function ccyFormat(num) {
-//   return `${num.toFixed(2)}`;
-// }
+  const incrementQuantity = (index) => {
+    setData(prevData => {
+      const newData = [...prevData];
+      newData[index].quantity += 1;
+      return newData;
+    });
+  };
 
-// function priceRow(qty, unit) {
-//   return qty * unit;
-// }
+  const decrementQuantity = (index) => {
+    setData(prevData => {
+      const newData = [...prevData];
+      if (newData[index].quantity > 0) {
+        newData[index].quantity -= 1;
+      }
+      return newData;
+    });
+  };
 
-// function createRow(desc, qty, unit) {
-//   const price = priceRow(qty, unit);
-//   return { desc, qty, unit, price };
-// }
+  return { data, incrementQuantity, decrementQuantity };
+};
 
-// function subtotal(items) {
-//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-// }
-
-// const rows = [
-//   createRow('Paperclips (Box)', 100, 1.15),
-//   createRow('Paper (Case)', 10, 45.99),
-//   createRow('Waste Basket', 2, 17.99),
-// ];
-
-// const invoiceSubtotal = subtotal(rows);
-// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+export default useCalculator;
