@@ -4,6 +4,7 @@ import { Stack, Typography } from "@mui/material";
 import Header from "components/Header";
 import useStarred from "hooks/useStarred";
 import StallCard from "components/StallCard";
+import StarIcon from "assets/star-icon.png";
 
 export default function Starred() {
   const [toggleStars, isStarred, stars] = useStarred();
@@ -11,9 +12,16 @@ export default function Starred() {
   const userGuideContent = (
     <>
       <Typography variant="body1">
-        <u>Mark as Favorite</u>
+      <u>Mark as Favourite</u>
         <br />
-        Press the star button to add a stall to your favorites list.
+        <img
+          src={StarIcon}
+          alt="imported"
+        />
+        <br/>
+        Press the star button to add a stall to your favourites list.
+        <br />
+        <br />
       </Typography>
     </>
   );

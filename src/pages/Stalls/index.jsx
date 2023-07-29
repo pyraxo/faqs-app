@@ -6,6 +6,7 @@ import Header from "components/Header";
 import StallCard from "components/StallCard";
 
 import stalls from "assets/stalls.json";
+import StarIcon from "assets/star-icon.png";
 import useStarred from "hooks/useStarred";
 import useStatus from "hooks/useStatus";
 
@@ -17,9 +18,16 @@ const userGuideContent = (
       Tap on any stall to access its detailed information.
       <br />
       <br />
-      <u>Mark as Favorite</u>
-      <br />
-      Press the star button to add a stall to your favorites list.
+      <u>Mark as Favourite</u>
+        <br />
+        <img
+          src={StarIcon}
+          alt="imported"
+        />
+        <br/>
+        Press the star button to add a stall to your favourites list.
+        <br />
+        <br />
     </Typography>
   </>
 );

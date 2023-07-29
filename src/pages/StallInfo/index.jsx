@@ -23,6 +23,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 import "./style.css";
 import HPB from "assets/hpb.png";
+import StarIcon from "assets/star-icon.png";
+import BackIcon from "assets/back-icon.png";
+import MenuTab from "assets/menu-tab.png";
+import CalculatorTab from "assets/calculator-tab.png";
 import stallInfos from "assets/stalls.json";
 import Header from "components/Header";
 import StarButton from "components/StarButton";
@@ -228,14 +232,47 @@ export default function StallInfo() {
   const userGuideContent = (
     <>
       <Typography variant="body1">
-        <u>View Stall Details</u>
+        <u>Explore Menus</u>
         <br />
-        Tap on any stall to access its detailed information.
+        <img
+          src={MenuTab}
+          alt="imported"
+        />
+        <br/>
+        Navigate to the 'Menu' tab to discover stall details and view their menu lists.
+        <br/>
+        <br/>
+
+        <u>Meal Price Estimation</u>
+        <br />
+        <img
+          src={CalculatorTab}
+          alt="imported"
+        />
+        <br/>
+        Visit the 'Calculator' tab to estimate the cost of your meal.
+        <br/>
+        <br/>
+
+        <u>Mark as Favourite</u>
+        <br />
+        <img
+          src={StarIcon}
+          alt="imported"
+        />
+        <br/>
+        Press the star button to add a stall to your favourites list.
         <br />
         <br />
-        <u>Mark as Favorite</u>
+
+        <u>Return to Stall List</u>
         <br />
-        Press the star button to add a stall to your favorites list.
+        <img
+          src={BackIcon}
+          alt="imported"
+        />
+        <br/>
+        To go back to the stall list, press the back button located on the top left.
       </Typography>
     </>
   );
