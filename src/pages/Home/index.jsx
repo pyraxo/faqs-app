@@ -20,6 +20,10 @@ import Error from "@mui/icons-material/Error";
 import DoNotDisturb from "@mui/icons-material/DoNotDisturbOn";
 
 import StallLayout from "assets/stall-layout.png";
+import CanteenTraffic from "assets/canteen-traffic.png";
+import Warning from "assets/info-icon.png";
+import Closed from "assets/minus-icon.png";
+import RefreshQueue from "assets/refresh-icon.png";
 import useStatus from "hooks/useStatus";
 import TrafficCard from "components/TrafficCard";
 
@@ -31,7 +35,7 @@ export const HomeUserGuide = ({ open, handleClose }) => {
       PaperProps={{
         sx: {
           width: "83%",
-          height: "70%",
+          height: "87%",
           position: "fixed",
           top: 0,
           right: 0,
@@ -51,9 +55,14 @@ export const HomeUserGuide = ({ open, handleClose }) => {
         <u>
           Canteen Traffic
         </u>
-        <img>
-          {/* placeholder */}
-        </img>
+        <img
+          src={CanteenTraffic}
+          alt="imported"
+          style={{
+            width: "243px",
+            height: "86.4px"
+          }}
+        />
         <br/>
         This feature allows you to assess the current crowd level in the canteen.
         <ul>
@@ -71,13 +80,17 @@ export const HomeUserGuide = ({ open, handleClose }) => {
           Queue Advisory
         </u>
         <br/>
-        <img>
-          {/* placeholder */}
-        </img>
+        <img
+          src={Warning}
+          alt="imported"
+        />
+        <br/>
         This indicator notifies users about potentially long queues at a particular stall.
-        <img>
-          {/* placeholder */}
-        </img>
+        <br/>
+        <img
+          src={Closed}
+          alt="imported"
+        />
         <br/>
         This indicator notifies users about potentially closed stalls.
         <u>
@@ -85,9 +98,11 @@ export const HomeUserGuide = ({ open, handleClose }) => {
         <br/>
           Refresh Button
         </u>
-        <img>
-          {/* placeholder */}
-        </img>
+        <br/>
+        <img
+          src={RefreshQueue}
+          alt="imported"
+        />
         <br/>
         To get the latest stall queue information, simply click the refresh button.
       </DialogContent>
