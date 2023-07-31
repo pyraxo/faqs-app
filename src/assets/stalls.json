@@ -1,6 +1,6 @@
 [
   {
-    "name": "Dong Sheng Chicken Rice",
+    "name": "Chicken Rice",
     "img": "chicken-rice.png",
     "description": "Hainanese chicken rice specialty.",
     "menu": [
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "name": "Al-Masha's Kitchen",
+    "name": "Indian",
     "img": "indian.png",
     "description": "Experience the vibrant flavors of India with our authentic and aromatic dishes, showcasing the best of Indian cuisine."
   },

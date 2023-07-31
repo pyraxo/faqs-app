@@ -13,10 +13,16 @@ body {
   height: 30%;
   width: 100%;
   background-color: #86BD55;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   margin-bottom: 0;
+}
+
+.white-block {
+  height: 70%;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .cards-container {
@@ -24,14 +30,16 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-top: 10px;
   height: 150px;
+  align-items: flex-start;
 }
 
 .card {
   width: 180px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
   height: 150px;
+  justify-content: flex-start;
+  justify-items: flex-start;
 }
+

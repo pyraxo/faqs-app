@@ -12,8 +12,9 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
-  align-items: center;
   width: 100%;
+  align-items: flex-start;
+  justify-items: flex-start;
 }
 
 .green-block {
