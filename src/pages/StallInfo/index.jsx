@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import useStatus from "hooks/useStatus";
-import useStarred from "hooks/useStarred";
-// import useCalculator from "hooks/useCalculator";
+import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import './style.css';
+import ChickenRice from "assets/chicken-rice.png";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
+<<<<<<< Updated upstream
 import {
   Typography,
   IconButton,
@@ -34,162 +39,76 @@ import StarButton from "components/StarButton";
 const StallImage = ({ filepath, alt }) => {
   const [imageSrc, setImageSrc] = useState("");
   import(`assets/${filepath}`).then((module) => setImageSrc(module.default));
+=======
+const StallInfo = () => {
+>>>>>>> Stashed changes
   return (
-    <img
-      src={imageSrc}
-      alt={alt}
-      style={{
-        height: 70,
-        width: 70,
-        borderRadius: "100%",
-      }}
-    />
-  );
-};
-
-const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
-  const [toggleStars, isStarred] = useStarred();
-  const handleStarClick = (event) => {
-    event.stopPropagation();
-    setTimeout(() => toggleStars(stallId), 100);
-  };
-
-  const { name, img, description } = stallInfos[stallId];
-
-  const menu = stallInfos[stallId].menu || [];
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          paddingBottom: "12px",
-        }}
-      >
-        <Typography variant="h6" component="div" style={{ flex: 1 }}>
-          <b>{name}</b>
-        </Typography>
-        <StarButton
-          handleClick={handleStarClick}
-          isStarred={() => isStarred(stallId)}
-        />
-      </div>
-      <div
-        style={{ display: "flex", alignItems: "center", paddingBottom: "12px" }}
-      >
-        <div
+    <div>
+      <div className="stall-info-header">
+        {/* Back Icon */}
+        <ArrowBackIosIcon style={{ fontSize: 30, color: '#ffffff' }} />
+        <div style={{ flexGrow: 1 }}></div>
+        <Typography
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70px",
-            paddingRight: "12px",
+            textDecoration: 'underline',
+            color: '#ffffff',
+            fontSize: 20,
           }}
+          className='justify-center'
         >
-          <StallImage
-            filepath={img}
-            alt={name}
-            style={{
-              height: 70,
-              width: 70,
-              borderRadius: "100%",
-              alignItems: "center",
-            }}
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <CardContent style={{ padding: 0 }}>
-            <Typography variant="body2" nowrap="true" align="left">
-              {description}
-            </Typography>
-          </CardContent>
-        </div>
+          help?
+        </Typography>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 12,
-        }}
-      >
-        <img
-          src={HPB}
-          alt="HPB"
-          style={{
-            height: 50,
-            width: 50,
-          }}
-        />
+      <div className="green-block"></div>
+      <div className="stall-info-container">
+        <Card style={{ width: '370px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', height: '300px', marginBottom: '20px', zIndex: 1 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200px"
+              image={ChickenRice}
+              alt="Chicken Rice"
+            />
+            <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography gutterBottom variant="h5" component="div" style={{ fontWeight: 'bold' }}>
+                Chicken Rice
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                12 mins
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card style={{ width: '370px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', marginBottom: '20px' }}>
+          <CardActionArea>
+            <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant="body2" color="text.secondary">
+                Hainanese chicken rice specialty.
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card style={{ width: '370px', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)' }}>
+          <CardActionArea>
+            <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography gutterBottom variant="h5" component="div" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>
+                Menu
+              </Typography>
+              {/* Add the menu content here */}
+              <Typography variant="body2" color="text.secondary">
+                - Item 1 <br />
+                - Item 2 <br />
+                - Item 3 <br />
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 12,
-        }}
-      >
-        {isClosed ? (
-          <Container>
-            <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-              Closed
-            </Typography>
-          </Container>
-        ) : (
-          <TableContainer>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell align="center">No. of Queue</TableCell>
-                  <TableCell align="center">Est. Waiting Time</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="center">{queueLength}</TableCell>
-                  <TableCell align="center">{waitTime} minutes</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-      </div>
-      <Typography
-        variant="subtitle1"
-        component="div"
-        style={{
-          fontWeight: "bold",
-          textDecoration: "underline",
-          textAlign: "left",
-          paddingTop: "12px",
-        }}
-      >
-        Menu
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-            {menu.map((menuItem) => (
-              <TableRow key={menuItem.item}>
-                <TableCell align="left">{menuItem.item}</TableCell>
-                <TableCell align="left">{menuItem.price}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
     </div>
   );
 };
 
+<<<<<<< Updated upstream
 export default function StallInfo() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
@@ -438,3 +357,6 @@ export default function StallInfo() {
     </>
   );
 }
+=======
+export default StallInfo;
+>>>>>>> Stashed changes

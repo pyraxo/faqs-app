@@ -1,4 +1,11 @@
+import React from "react";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import ChickenRice from "assets/chicken-rice.png";
 import "./style.css";
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import {
   Box,
@@ -125,121 +132,49 @@ export const TableComponent = ({ data }) => {
     </table>
   );
 };
+=======
+>>>>>>> Stashed changes
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
-  const [status, refreshStatus] = useStatus();
-  const handleClickOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
-    <>
-      <Box
-        sx={{
-          width: "100%",
-          height: "250px",
-          bgcolor: "#86BD55",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Error
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "180px",
-            right: "217px",
-            zIndex: 1,
-            color: "#fead3d",
-          }}
-        />
-        <Error
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "180px",
-            right: "121px",
-            zIndex: 1,
-            color: "#fead3d",
-          }}
-        />
-        <DoNotDisturb
-          style={{
-            width: "30px",
-            height: "30px",
-            position: "absolute",
-            top: "110px",
-            right: "48px",
-            zIndex: 1,
-            color: "grey",
-          }}
-        />
-        <IconButton
-          sx={{
-            width: "20px",
-            height: "20px",
-            position: "absolute",
-            top: "200px",
-            right: "20px",
-          }}
-          onClick={refreshStatus}
-        >
-          <Refresh />
-        </IconButton>
-
-        <TrafficCard />
-        <img
-          src={StallLayout}
-          alt="imported"
-          style={{ marginTop: "30px", width: "320px", height: "170px" }}
-        />
-        <IconButton
-          color="inherit"
-          aria-label="info about this layout"
-          onClick={handleClickOpen}
-          sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            color: "primary",
-          }}
-        >
-          <InfoIcon />
-        </IconButton>
-      </Box>
-      <HomeUserGuide open={open} handleClose={handleClose} />
-      <Box>
-        <TableContainer component={Paper}>
-          <Table sx={{ width: "100%" }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Stall</TableCell>
-                <TableCell align="right">No. of People</TableCell>
-                <TableCell align="right">Waiting Time&nbsp;(min)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {status.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.queueLength}</TableCell>
-                  <TableCell align="right">{row.waitTime}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
-    </>
+    <div className="container">
+      <div className="green-block"></div>
+      <div className="cards-container">
+        <Card className="card">
+          <CardMedia
+            component="img"
+            height="80px"
+            image={ChickenRice}
+            alt="Chicken Rice"
+            paddingBottom="5px"
+          />
+          <CardContent sx={{ padding: 0, paddingBottom: 0 }}>
+            <Typography variant="h6" component="div" padding="5px" paddingBottom="0" sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Card 1
+            </Typography>
+            <Typography variant="body2" color="text.secondary" padding="5px" sx={{ textAlign: "center" }}>
+              This is the first card
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className="card">
+          <CardMedia
+            component="img"
+            height="80px"
+            image={ChickenRice}
+            alt="Chicken Rice"
+          />
+          <CardContent sx={{ padding: 0, paddingBottom: 0 }}>
+            <Typography variant="h6" component="div" padding="5px" paddingBottom="0" sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Card 2
+            </Typography>
+            <Typography variant="body2" color="text.secondary" padding="5px" sx={{ textAlign: "center" }}>
+              This is the second card
+            </Typography>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 };
 
