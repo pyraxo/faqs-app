@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-container {
+  background-color: #86bd55;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
