@@ -1,0 +1,27 @@
+/* BottomNavBar.css */
+
+.bottom-navbar-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #86BD55;
+  padding: 10px 0;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.end-button {
+  background-color: #ffffff;
+  color: #EE9418;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
