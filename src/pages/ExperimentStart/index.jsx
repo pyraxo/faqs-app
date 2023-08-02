@@ -2,7 +2,7 @@ import "./style.css";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Logo from "assets/faqs-logo-white.png";
+import Logo from "assets/logo-white.png";
 
 const LandingPage = () => {
   const imageStyle = {

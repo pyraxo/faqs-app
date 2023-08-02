@@ -1,0 +1,28 @@
+/* style.css */
+body {
+  margin: 0;
+}
+
+.container {
+  background-color: #86bd55;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20vh;
+}
+
+.logo {
+  width: 70vw;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 10rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter";
+}
