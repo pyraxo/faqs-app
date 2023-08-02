@@ -1,0 +1,24 @@
+/* style.css */
+body {
+  background-color: #86BD55;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 844px;
+  width: 390px;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #86BD55;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  padding-bottom: 10%;
+  padding-top: 30%;
+}
+
