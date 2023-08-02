@@ -1,13 +1,13 @@
 /* style.css */
 body {
-  background-color: #86BD55;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container {
+.landing-container {
+  background-color: #86bd55;
   height: 100%;
   width: 100%;
   display: flex;
@@ -21,4 +21,3 @@ img {
   width: 100%;
   height: auto;
 }
-

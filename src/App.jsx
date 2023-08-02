@@ -1,13 +1,27 @@
-import React from 'react';
-import Home from './pages/Home/index.jsx';
+// import "@fontsource/poppins";
+import "assets/fonts.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
 
-const App = () => {
+import Home from "pages/Home";
+import Stalls from "pages/Stalls";
+import Starred from "pages/Starred";
+import StallInfo from "pages/StallInfo";
+import LandingPage from "pages/LandingPage";
+
+function App() {
   return (
-    <div>
-      {/* Your other components or content can go here */}
-      <Home />
-    </div>
+    <Router basename="/faqs-app">
+      <Routes>
+        <Route path="/experiment" element={<LandingPage />} />
+        <Route path="/stalls" element={<Stalls />} />
+        <Route path="/stalls/:id" element={<StallInfo />} />
+        <Route path="/starred" element={<Starred />} />
+        <Route exact path="/" element={<Home />} />
+      </Routes>
+      {/* <NavBar /> */}
+    </Router>
   );
-};
+}
 
 export default App;

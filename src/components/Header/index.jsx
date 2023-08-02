@@ -3,33 +3,69 @@ import {
   AppBar,
   Box,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
-  Dialog,
-  DialogContent,
-  DialogTitle,
 } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
-import CloseIcon from "@mui/icons-material/Close";
+import Info from "@mui/icons-material/Info";
+import Sort from "@mui/icons-material/Sort";
 
-export default function Header({ title, userGuideContent }) {
-  const [open, setOpen] = useState(false);
-
-  const handleMenu = () => {
-    setOpen(true);
-  };
-
+export default function Header({ title }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   const handleClose = () => {
-    setOpen(false);
+    setAnchorEl(null);
   };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  // const handleSort = (sortType) => {
+  //   handleClose();
+  //   // if (changeSort) changeSort(sortType);
+  // };
+  const handleMenu = () => {};
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#86BD55" }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#FFFFFF" }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: "#FFFFFF" }}
+          >
             {title}
           </Typography>
+          {
+            <>
+              <IconButton
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                size="large"
+                aria-label="sort"
+                onClick={handleClick}
+                color="inherit"
+                id="sort-button"
+              >
+                <Sort />
+              </IconButton>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "sort-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>Sort by name</MenuItem>
+                <MenuItem onClick={handleClose}>Sort by queue</MenuItem>
+                <MenuItem onClick={handleClose}>Sort by canteen order</MenuItem>
+              </Menu>
+            </>
+          }
           <IconButton
             size="large"
             aria-label="info guide"
@@ -38,36 +74,10 @@ export default function Header({ title, userGuideContent }) {
             onClick={handleMenu}
             color="inherit"
           >
-            <InfoIcon />
+            <Info />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Dialog
-        onClose={handleClose}
-        open={open}
-        PaperProps={{
-          sx: {
-            width: "80%",
-            height: "70%",
-            position: "fixed",
-            top: "center",
-            left: "center",
-            borderRadius: "10px", // Rounded edges
-          },
-        }}
-      >
-        <DialogTitle sx={{ fontWeight: "bold", color: "black", bgcolor: "#B1D490" }}>
-          User Guide
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-            sx={{ position: "absolute", top: 0, right: 0 }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent sx={{ bgcolor: "#B1D490" }}>{userGuideContent}</DialogContent>
-      </Dialog>
     </Box>
   );
 }
