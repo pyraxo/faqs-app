@@ -8,7 +8,7 @@ const BottomNavBar = () => {
   return (
     <div className="bottom-navbar-container">
       <button className="end-button" onClick={handleButtonClick}>
-        END
+        I'm done deciding!
       </button>
     </div>
   );
