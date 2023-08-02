@@ -60,9 +60,7 @@ export default function StallInfo() {
               >
                 Chicken Rice
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                12 mins
-              </Typography>
+              <Typography variant="body2" color="text.secondary"/>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -112,11 +110,6 @@ export default function StallInfo() {
                 Menu
               </Typography>
               {/* Add the menu content here */}
-              <Typography variant="body2" color="text.secondary">
-                - Item 1 <br />
-                - Item 2 <br />
-                - Item 3 <br />
-              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
