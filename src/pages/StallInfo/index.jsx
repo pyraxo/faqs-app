@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-// import { CardActionArea } from "@mui/material";
+
 import "./style.css";
 import ChickenRice from "assets/chicken-rice.png";
 import BottomNavBar from "components/ExperimentNavbar";
@@ -16,6 +16,13 @@ export default function StallInfo() {
   const handleButtonClick = () => {
     navigate('/experiment/1');
   };
+
+  // Extracting Stall ID from URL
+  const location = useLocation(); 
+  const currentURL = "/stalls/";
+  const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
+  const dynamicMenu = data[Number(stall_id)].menu
+  
 
   return (
     <div>
@@ -99,53 +106,35 @@ export default function StallInfo() {
               alignItems: "center",
             }}
           >
-          <Typography
-            gutterBottom
-            variant="h6"
-            component="div"
-            style={{
-              fontWeight: "bold",
-              textDecoration: "underline",
-              textAlign: "center"
-            }}
-          >
-            Menu
-          </Typography>
-            {/* {data.map((stall) => {
-              // Check if the stall has a menu
-              if (stall.menu) {
-                return (
-                  <div key={stall.name}>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                      style={{
-                        fontWeight: "bold",
-                        textDecoration: "underline",
-                        textAlign: "center"
-                      }}
-                    >
-                      {stall.name} Menu
-                    </Typography>
-                    <ul>
-                      {stall.menu.map((item) => (
-                        <li key={item.item}>
-                          {item.item} - {item.price}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              } else {
-                // If the stall does not have a menu
-                return (
-                  <Typography variant="body2" color="text.secondary" key={stall.name}>
-                    No menu available for {stall.name}.
-                  </Typography>
-                );
-              }
-            })} */}
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="div"
+              style={{
+                fontWeight: "bold",
+                textDecoration: "underline",
+                textAlign: "center"
+              }}
+            >
+              Menu
+            </Typography>
+            <div>
+              {dynamicMenu ? (
+                <div key={data[Number(stall_id)].name}>
+                  <ul>
+                    {dynamicMenu.map((item) => (
+                      <li key={item.item}>
+                        {item.item} - {item.price}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <Typography variant="body2" color="textSecondary" key={data[Number(stall_id)].name}>
+                  No menu available for {data[Number(stall_id)].name}.
+                </Typography>
+              )}
+            </div>
           </CardContent>
         </Card>
         <BottomNavBar />
