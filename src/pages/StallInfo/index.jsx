@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,11 +11,20 @@ import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export default function StallInfo() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/experiment/1');
+  };
+
   return (
     <div>
       <div className="stall-info-header">
         {/* Back Icon */}
-        <ArrowBackIosIcon style={{ fontSize: 30, color: "#ffffff" }} />
+        <ArrowBackIosIcon
+          style={{ fontSize: 30, color: "#ffffff" }}
+          onClick={handleButtonClick}
+        />
         <div style={{ flexGrow: 1 }}></div>
         <Typography
           style={{
