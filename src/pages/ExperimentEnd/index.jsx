@@ -7,7 +7,7 @@ import "./style.css";
 
 export default function EndingPage() {
   return (
-    <div className="container">
+    <div className="experiment-container">
       <Container>
         <Stack
           spacing={0}
@@ -20,7 +20,7 @@ export default function EndingPage() {
             thanks for joining our
           </Typography>
           <Typography variant="h5" className="subtitle">
-            web experiment
+            web experiment!
           </Typography>
         </Stack>
       </Container>
