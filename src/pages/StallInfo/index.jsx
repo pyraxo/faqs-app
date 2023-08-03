@@ -9,11 +9,13 @@ import "./style.css";
 import ChickenRice from "assets/chicken-rice.png";
 import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+
 export default function StallInfo() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate('/experiment/1');
   };
+  
   return (
     <div>
       <div className="stall-info-header">
