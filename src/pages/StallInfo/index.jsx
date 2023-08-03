@@ -99,6 +99,18 @@ export default function StallInfo() {
               alignItems: "center",
             }}
           >
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            style={{
+              fontWeight: "bold",
+              textDecoration: "underline",
+              textAlign: "center"
+            }}
+          >
+            Menu
+          </Typography>
             {/* {data.map((stall) => {
               // Check if the stall has a menu
               if (stall.menu) {
