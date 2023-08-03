@@ -14,6 +14,7 @@ body {
   width: 100%;
   align-items: flex-start;
   justify-items: flex-start;
+  margin-top: -20vh;
 }
 
 .green-block {
