@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 import "./style.css";
-import ChickenRice from "assets/chicken-rice.png";
 import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import data from "../../assets/stalls.json";
@@ -21,10 +20,11 @@ export default function StallInfo() {
   const location = useLocation(); 
   const currentURL = "/stalls/";
   const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
-  const dynamicDescription = data[Number(stall_id)].description
-  const dynamicMenu = data[Number(stall_id)].menu
-  const dynamicName = data[Number(stall_id)].name
-  
+  const dynamicDescription = data[Number(stall_id)].description;
+  const dynamicMenu = data[Number(stall_id)].menu;
+  const dynamicName = data[Number(stall_id)].name;
+  const dynamicImage = data[Number(stall_id)].img;
+  const ImagePath = require(`../../assets/${dynamicImage}`);
 
   return (
     <div>
@@ -47,15 +47,20 @@ export default function StallInfo() {
           help?
         </Typography>
       </div>
-      <div className="green-block"></div>
+      <div className="green-block">
+      </div>
       <div className="stall-info-container">
         <Card style= {{ marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)" }}>
           <CardMedia
             component="img"
-            height="150px"
+            style={{
+              height: "250px",
+              width: "370px",
+              objectFit: "cover"
+            }}
             width="370px"
-            image={ChickenRice}
-            alt="Chicken Rice"
+            image={ImagePath}
+            alt={dynamicName}
           />
           <CardContent
             style={{
