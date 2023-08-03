@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "./style.css";
 import ChickenRice from "assets/chicken-rice.png";
+import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export default function StallInfo() {
@@ -113,6 +114,7 @@ export default function StallInfo() {
             </CardContent>
           </CardActionArea>
         </Card>
+        <BottomNavBar />
       </div>
     </div>
   );
