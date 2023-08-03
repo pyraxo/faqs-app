@@ -56,7 +56,7 @@ const Home = () => {
                 paddingBottom="5px"
               />
               <CardContent sx={{ padding: 0, paddingBottom: 0 }}>
-              <Typography
+                <Typography
                   variant="h6"
                   component="div"
                   padding="5px"

@@ -9,14 +9,16 @@ body {
   min-height: 100vh;
 }
 
-.green-block {
-  height: 30%;
+.verA-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
   width: 100%;
-  background-color: #86bd55;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .white-block {
@@ -28,17 +30,22 @@ body {
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
-  height: 150px;
   align-items: flex-start;
+  height: 80vh;
+  width: 100%;
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  margin: 0;
 }
 
-.card {
-  width: 180px;
+.stall-card {
+  width: 90vw;
+  height: 7vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: 150px;
+  display: flex;
   justify-content: flex-start;
   justify-items: flex-start;
 }

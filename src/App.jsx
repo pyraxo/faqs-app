@@ -1,5 +1,9 @@
-import "@fontsource/inter";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import React from "react";
 
 import Home from "pages/Home";
@@ -8,6 +12,8 @@ import Starred from "pages/Starred";
 import StallInfo from "pages/StallInfo";
 import LandingPage from "pages/ExperimentStart";
 import EndingPage from "pages/ExperimentEnd";
+
+import VersionA from "pages/HomeA";
 
 function App() {
   return (
@@ -18,7 +24,9 @@ function App() {
         <Route path="/stalls" element={<Stalls />} />
         <Route path="/stalls/:id" element={<StallInfo />} />
         <Route path="/starred" element={<Starred />} />
+        <Route path="/experiment/1" element={<VersionA />} />
         <Route exact path="/" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {/* <NavBar /> */}
     </Router>

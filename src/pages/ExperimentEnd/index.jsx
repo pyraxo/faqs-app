@@ -15,7 +15,7 @@ export default function EndingPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <img src={Logo} className="logo" alt="Logo" />
+          <img src={Logo} className="logo-end" alt="Logo" />
           <Typography variant="h5" className="subtitle">
             thanks for joining our
           </Typography>

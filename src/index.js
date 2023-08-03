@@ -1,3 +1,4 @@
+import "@fontsource-variable/inter";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@mui/material";
@@ -9,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Inter",
+    fontFamily: "Inter Variable",
   },
 });
 

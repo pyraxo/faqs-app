@@ -1,20 +1,11 @@
 /* style.css */
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.landing-container {
-  background-color: #86bd55;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 30%; /* Move the paddingTop here */
+.logo-start {
+  width: 70vw;
+  height: auto;
 }
 
 img {
