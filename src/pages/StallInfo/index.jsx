@@ -9,22 +9,20 @@ import "./style.css";
 import ChickenRice from "assets/chicken-rice.png";
 import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-
 export default function StallInfo() {
   const navigate = useNavigate();
-
   const handleButtonClick = () => {
     navigate('/experiment/1');
   };
-
   return (
     <div>
       <div className="stall-info-header">
         {/* Back Icon */}
         <ArrowBackIosIcon
+          className="back-icon"
           style={{ fontSize: 30, color: "#ffffff" }}
           onClick={handleButtonClick}
-          />
+        />
         <div style={{ flexGrow: 1 }}></div>
         <Typography
           style={{
@@ -32,11 +30,12 @@ export default function StallInfo() {
             color: "#ffffff",
             fontSize: 20,
           }}
-          className="justify-center"
+          className="help-text"
         >
           help?
         </Typography>
       </div>
+      <div className="green-block"></div>
       <div className="stall-info-container">
         <Card
           style={{
