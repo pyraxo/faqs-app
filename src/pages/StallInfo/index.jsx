@@ -23,6 +23,7 @@ export default function StallInfo() {
   const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
   const dynamicDescription = data[Number(stall_id)].description
   const dynamicMenu = data[Number(stall_id)].menu
+  const dynamicName = data[Number(stall_id)].name
   
 
   return (
@@ -69,7 +70,9 @@ export default function StallInfo() {
               component="div"
               style={{ fontWeight: "bold" }}
             >
-              Chicken Rice
+              <div>
+                {dynamicName}
+              </div>
             </Typography>
           </CardContent>
         </Card>
