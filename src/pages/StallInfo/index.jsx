@@ -24,7 +24,7 @@ export default function StallInfo() {
         <ArrowBackIosIcon
           style={{ fontSize: 30, color: "#ffffff" }}
           onClick={handleButtonClick}
-        />
+          />
         <div style={{ flexGrow: 1 }}></div>
         <Typography
           style={{
@@ -37,7 +37,6 @@ export default function StallInfo() {
           help?
         </Typography>
       </div>
-      <div className="green-block"></div>
       <div className="stall-info-container">
         <Card
           style={{
