@@ -16,7 +16,7 @@ export default function StallInfo() {
   const handleButtonClick = () => {
     navigate('/experiment/1');
   };
-  
+
   return (
     <div>
       <div className="stall-info-header">
@@ -40,19 +40,11 @@ export default function StallInfo() {
       </div>
       <div className="green-block"></div>
       <div className="stall-info-container">
-        <Card
-          style={{
-            width: "370px",
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-            height: "300px",
-            marginBottom: "20px",
-            zIndex: 1,
-          }}
-        >
+        <Card style= {{ marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)" }}>
           <CardMedia
             component="img"
-            height="200px"
+            height="150px"
+            width="370px"
             image={ChickenRice}
             alt="Chicken Rice"
           />
@@ -71,7 +63,6 @@ export default function StallInfo() {
             >
               Chicken Rice
             </Typography>
-            <Typography variant="body2" color="text.secondary"/>
           </CardContent>
         </Card>
         <Card

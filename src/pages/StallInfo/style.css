@@ -11,14 +11,14 @@ body {
 .stall-info-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 370px;
   align-items: flex-start;
   justify-items: flex-start;
-  margin-top: -20vh;
+  padding-bottom: 20px;
 }
 
 .green-block {
-  height: 10vh;
+  height: 30vh;
   width: 100%;
   background-color: #86BD55;
   position: absolute;
