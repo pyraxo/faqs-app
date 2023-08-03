@@ -21,6 +21,7 @@ export default function StallInfo() {
   const location = useLocation(); 
   const currentURL = "/stalls/";
   const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
+  const dynamicDescription = data[Number(stall_id)].description
   const dynamicMenu = data[Number(stall_id)].menu
   
 
@@ -87,9 +88,9 @@ export default function StallInfo() {
               alignItems: "center",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Hainanese chicken rice specialty.
-            </Typography>
+            <div>
+              {dynamicDescription}
+            </div>
           </CardContent>
         </Card>
         <Card
