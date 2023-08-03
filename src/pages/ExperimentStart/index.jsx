@@ -1,5 +1,6 @@
 import "./style.css";
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -8,6 +9,12 @@ import Button from "@mui/material/Button";
 import Logo from "assets/logo-white.png";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    // Navigate to the EndingPage when the button is clicked
+    navigate('/experiment/1');
+  };
   return (
     <div className="experiment-container">
       <Container>
@@ -31,7 +38,7 @@ export default function LandingPage() {
               marginTop: "40vh",
             }}
           >
-            <Button
+            <Button onClick={handleButtonClick}
               style={{
                 backgroundColor: "#ffffff",
                 color: "#EE9418",
