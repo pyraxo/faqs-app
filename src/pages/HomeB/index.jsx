@@ -12,15 +12,15 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Sort from "@mui/icons-material/Sort";
-import Refresh from "@mui/icons-material/Refresh";
 
 import "./style.css";
 import stallsData from "assets/stalls.json";
 import StallImage from "components/StallImage";
 import Availability from "assets/availability.png";
 import BottomNavBar from "components/ExperimentNavbar";
+import UtilityIcons from "components/UtilityIcons";
+import useLocalStorage from "hooks/useLocalStorage";
+import LastUpdated from "components/LastUpdated";
 
 export default function HomeB() {
   const navigate = useNavigate();
@@ -29,6 +29,10 @@ export default function HomeB() {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [sortType, setSortType] = useState("canteen");
+  const [lastUpdated, setLastUpdated] = useLocalStorage(
+    "lastUpdated",
+    Date.now()
+  );
   const handleClose = (option) => {
     setTimeout(() => {
       setAnchorEl(null);
@@ -97,51 +101,11 @@ export default function HomeB() {
         </Stack>
       </Box>
       <Box className="verB-utility-bar">
-        <Typography sx={{ fontSize: "1.5vh", alignSelf: "center", ml: "3vw" }}>
-          waiting times last updated: {"2m"} ago
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignContent: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignContent: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <IconButton
-              size="large"
-              aria-label="sort"
-              onClick={handleClickSort}
-              id="sort-button"
-              sx={{
-                height: "1vh",
-                ml: "2vw",
-                alignSelf: "center",
-              }}
-            >
-              <Sort />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="refresh"
-              onClick={() => {}}
-              color="inherit"
-              id="sort-button"
-              sx={{ height: "1vh", alignSelf: "center" }}
-            >
-              <Refresh />
-            </IconButton>
-          </Box>
-        </Box>
+        <LastUpdated lastUpdated={lastUpdated} />
+        <UtilityIcons
+          handleClickSort={handleClickSort}
+          setLastUpdated={setLastUpdated}
+        />
       </Box>
       <Container className="cards-container-B">
         <Stack spacing={3}>

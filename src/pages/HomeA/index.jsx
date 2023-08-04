@@ -11,6 +11,7 @@ import {
   CardActionArea,
   Menu,
   MenuItem,
+  CircularProgress,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Sort from "@mui/icons-material/Sort";
@@ -21,6 +22,9 @@ import stallsData from "assets/stalls.json";
 import StallImage from "components/StallImage";
 import Logo from "assets/logo-black.png";
 import BottomNavBar from "components/ExperimentNavbar";
+import useLocalStorage from "hooks/useLocalStorage";
+import LastUpdated from "components/LastUpdated";
+import UtilityIcons from "components/UtilityIcons";
 
 export default function HomeA() {
   const navigate = useNavigate();
@@ -29,6 +33,11 @@ export default function HomeA() {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [sortType, setSortType] = useState("canteen");
+  const [lastUpdated, setLastUpdated] = useLocalStorage(
+    "lastUpdated",
+    Date.now()
+  );
+
   const handleClose = (option) => {
     setTimeout(() => {
       setAnchorEl(null);
@@ -85,57 +94,29 @@ export default function HomeA() {
             style={{ width: "auto", height: "10vh" }}
             alt="logo"
           />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignContent: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography sx={{ fontSize: "1.5vh", alignSelf: "center" }}>
-              waiting times last updated: {"2m"} ago
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignContent: "center",
-                justifyContent: "center",
-                mt: "1vh",
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="sort"
-                onClick={handleClickSort}
-                id="sort-button"
-                sx={{ height: "1vh" }}
-              >
-                <Sort />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="refresh"
-                onClick={() => {}}
-                color="inherit"
-                id="sort-button"
-                sx={{ height: "1vh" }}
-              >
-                <Refresh />
-              </IconButton>
-            </Box>
-          </Box>
+          <LastUpdated lastUpdated={lastUpdated} />
+          <UtilityIcons
+            handleClickSort={handleClickSort}
+            setLastUpdated={setLastUpdated}
+          />
         </Stack>
       </Box>
 
       <Container className="cards-container">
-        <Stack spacing={3}>
+        <Stack
+          spacing={3}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+        >
           {sortWrapper(stallsData).map((stall, index) => (
             <Card
               key={index}
               className="stall-card"
-              sx={{ borderRadius: "10px" }}
+              sx={{ borderRadius: "10px", alignSelf: "center" }}
             >
               <CardActionArea
                 component="div"
