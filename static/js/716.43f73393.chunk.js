@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfaqs_app=self.webpackChunkfaqs_app||[]).push([[716],{6716:function(a,p,s){a.exports=s.p+"static/media/indian.7ce08a8130d86a18f377.png"}}]);
