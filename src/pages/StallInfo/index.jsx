@@ -1,20 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import Card from "@mui/material/Card";
+import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import CloseIcon from '@mui/icons-material/Close';
 
 import "./style.css";
 import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import data from "../../assets/stalls.json";
-import { borderRadius } from "@mui/system";
+
+export const UserGuide = ({ open, handleUserGuideClose }) => {
+  return (
+    <Dialog
+      onClose={handleUserGuideClose}
+      open={open}
+      PaperProps={{
+        sx: {
+          width: "80%",
+          minHeight: "60%",
+          position: "fixed",
+          top: 10,
+          right: 0,
+          borderRadius: "10px"
+        },
+      }}
+    >
+      <DialogTitle sx={{ fontWeight: "bold", color: "black", bgcolor: "#B1D490", display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        User Guide
+        <CloseIcon onClick={handleUserGuideClose} style={{ cursor: 'pointer' }} />
+      </DialogTitle>
+      <DialogContent sx={{ bgcolor: "#B1D490" }}>
+        <u>Refresh Button</u>
+        <br/>
+        To get the latest stall queue information, simply click the refresh button.
+        <br/>
+        <br/>
+        <u>Sort Button</u>
+        <br/>
+        Sort Stalls by stall name, stall queue, canteen order
+        <br/>
+        <br/>
+        <u>Closed Stalls</u>
+        <br/>
+        Stall card will be greyed out when closed. This indicates that the stall is not currently in operation and is not accepting orders.
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export default function StallInfo() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate('/experiment/1');
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleUserGuideOpen = () => {
+    setOpen(true);
+  };
+
+  const handleUserGuideClose = () => {
+    setOpen(false);
   };
 
   // Extracting Stall ID from URL
@@ -44,9 +94,11 @@ export default function StallInfo() {
             fontSize: 20,
           }}
           className="help-text"
+          onClick={handleUserGuideOpen}
         >
           help?
         </Typography>
+        <UserGuide open={open} handleUserGuideClose={handleUserGuideClose}/>
       </div>
       <div className="green-block">
       </div>
