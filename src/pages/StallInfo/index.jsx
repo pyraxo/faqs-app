@@ -103,12 +103,12 @@ export default function StallInfo() {
       <div className="green-block">
       </div>
       <div className="stall-info-container">
-        <Card style= {{ marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
+        <Card style= {{ width: "100%", marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
           <CardMedia
             component="img"
             style={{
               height: "250px",
-              width: "370px",
+              width: "100%",
               objectFit: "cover"
             }}
             width="370px"
@@ -136,7 +136,7 @@ export default function StallInfo() {
         </Card>
         <Card
           style={{
-            width: "370px",
+            width: "100%",
             borderRadius: "10px",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
             marginBottom: "20px",
@@ -156,7 +156,7 @@ export default function StallInfo() {
         </Card>
         <Card
           style={{
-            width: "370px",
+            width: "100%",
             borderRadius: "10px",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
           }}
