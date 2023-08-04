@@ -28,19 +28,32 @@ export default function HomeA() {
     setTimeout(() => navigate(`/stalls/${stallId}`), 200);
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const handleClose = () => {
-    setTimeout(() => setAnchorEl(null), 100);
+  const [sortType, setSortType] = useState("canteen");
+  const handleClose = (option) => {
+    setTimeout(() => {
+      setAnchorEl(null);
+      setSortType(option);
+    }, 100);
   };
   const handleClickSort = (event) => {
     const target = event.currentTarget;
     setTimeout(() => setAnchorEl(target), 100);
   };
 
-  const [times, setTimes] = useState([]);
-  useEffect(
-    () => setTimes(stallsData.map(() => Math.floor(Math.random() * 10) + 5)),
-    []
-  );
+  const sortWrapper = (data) => {
+    switch (sortType) {
+      case "name": {
+        return [...data].sort((a, b) => a.name.localeCompare(b.name));
+      }
+      case "queue": {
+        return [...data].sort((a, b) => a.queue - b.queue);
+      }
+      case "canteen":
+      default: {
+        return data;
+      }
+    }
+  };
   return (
     <>
       <Box className="verA-header">
@@ -53,9 +66,13 @@ export default function HomeA() {
             "aria-labelledby": "sort-button",
           }}
         >
-          <MenuItem onClick={handleClose}>Sort by name</MenuItem>
-          <MenuItem onClick={handleClose}>Sort by queue</MenuItem>
-          <MenuItem onClick={handleClose}>Sort by canteen order</MenuItem>
+          <MenuItem onClick={() => handleClose("name")}>Sort by name</MenuItem>
+          <MenuItem onClick={() => handleClose("queue")}>
+            Sort by queue
+          </MenuItem>
+          <MenuItem onClick={() => handleClose("canteen")}>
+            Sort by canteen order
+          </MenuItem>
         </Menu>
         <Stack
           spacing={1}
@@ -114,7 +131,7 @@ export default function HomeA() {
 
       <Container className="cards-container">
         <Stack spacing={3}>
-          {stallsData.map((stall, index) => (
+          {sortWrapper(stallsData).map((stall, index) => (
             <Card
               key={index}
               className="stall-card"
@@ -189,7 +206,7 @@ export default function HomeA() {
                           fontWeight: "800",
                         }}
                       >
-                        {times[index]}
+                        {stall.queue}
                       </Typography>
                       <Typography
                         variant="body2"

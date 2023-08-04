@@ -6,22 +6,26 @@
     "menu": [
       { "item": "Roasted Chicken Rice", "price": "$3.50" },
       { "item": "Steamed Chicken Rice", "price": "$3.50" }
-    ]
+    ],
+    "queue": 17
   },
   {
     "name": "Indian",
     "img": "indian.png",
-    "description": "Experience the vibrant flavors of India with our authentic and aromatic dishes, showcasing the best of Indian cuisine."
+    "description": "Experience the vibrant flavors of India with our authentic and aromatic dishes, showcasing the best of Indian cuisine.",
+    "queue": 6
   },
   {
     "name": "Taiwanese",
     "img": "taiwanese.png",
-    "description": "Savor the combination of fragrant fried rice and delectable cutlets, transporting your taste buds to the streets of Taiwan."
+    "description": "Savor the combination of fragrant fried rice and delectable cutlets, transporting your taste buds to the streets of Taiwan.",
+    "queue": 5
   },
   {
     "name": "Healthy Soup",
     "img": "healthy-soup.png",
-    "description": "Serving variety of Chinese herbal soups, nourishing both your body with their wholesome goodness."
+    "description": "Serving variety of Chinese herbal soups, nourishing both your body with their wholesome goodness.",
+    "queue": 6
   },
   {
     "name": "Mixed Rice",
@@ -31,16 +35,19 @@
       { "item": "Rice", "price": "$1.50" },
       { "item": "Meat", "price": "$1.00" },
       { "item": "Vegetable", "price": "$0.50" }
-    ]
+    ],
+    "queue": 10
   },
   {
     "name": "Drinks & Snacks",
     "img": "drinks.png",
-    "description": "Quench your thirst with classic kopitiam drinks served fresh and full of flavor at our drinks stall."
+    "description": "Quench your thirst with classic kopitiam drinks served fresh and full of flavor at our drinks stall.",
+    "queue": 5
   },
   {
     "name": "Ban Mian",
     "img": "banmian.png",
-    "description": "Dive into the rich flavors of traditional banmian, handmade, promising a bowl of comfort in every bite."
+    "description": "Dive into the rich flavors of traditional banmian, handmade, promising a bowl of comfort in every bite.",
+    "queue": 18
   }
 ]

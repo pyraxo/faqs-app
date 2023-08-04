@@ -22,10 +22,16 @@ body {
   background-color: #86bd55;
 }
 
-.white-block {
-  height: 70%;
-  width: 100%;
-  background-color: #ffffff;
+.verB-utility-bar {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  height: 5vh;
+  position: absolute;
+  top: 30vh;
+  left: 0;
+  width: 100vw;
 }
 
 .cards-container-B {
@@ -33,12 +39,11 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  height: calc(70vh - 60px);
-  padding-top: 2vh;
+  height: calc(65vh - 60px);
   padding-bottom: 2vh;
   width: 100%;
   position: absolute;
-  bottom: 60px;
+  bottom: 50px;
   left: 0;
   margin: 0;
   overflow: scroll;
