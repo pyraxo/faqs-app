@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20vh;
+  height: 22vh;
   width: 100%;
   position: absolute;
   top: 0;
@@ -32,12 +32,13 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  height: 80vh;
+  height: calc(78vh - 60px);
   width: 100%;
   position: absolute;
-  top: 20vh;
+  top: 22vh;
   left: 0;
   margin: 0;
+  overflow: scroll;
 }
 
 .stall-card {

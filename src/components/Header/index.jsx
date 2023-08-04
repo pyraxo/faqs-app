@@ -9,73 +9,86 @@ import {
 } from "@mui/material";
 import Info from "@mui/icons-material/Info";
 import Sort from "@mui/icons-material/Sort";
+import Refresh from "@mui/icons-material/Refresh";
 import React, { useState } from "react";
 
 export default function Header({ title }) {
-const [anchorEl, setAnchorEl] = useState(null);
-const open = Boolean(anchorEl);
-const handleClose = () => {
-  setAnchorEl(null);
-};
-const handleClick = (event) => {
-  setAnchorEl(event.currentTarget);
-};
-// const handleSort = (sortType) => {
-//   handleClose();
-//   // if (changeSort) changeSort(sortType);
-// };
-const handleMenu = () => {};
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  // const handleSort = (sortType) => {
+  //   handleClose();
+  //   // if (changeSort) changeSort(sortType);
+  // };
+  const handleMenu = () => {};
 
-return (
-  <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static" sx={{ backgroundColor: "#86BD55" }}>
-      <Toolbar>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, color: "#FFFFFF" }}
-        >
-          {title}
-        </Typography>
-        {
-          <>
-            <IconButton
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              size="large"
-              aria-label="sort"
-              onClick={handleClick}
-              color="inherit"
-              id="sort-button"
-            >
-              <Sort />
-            </IconButton>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "sort-button",
-              }}
-            >
-              <MenuItem onClick={handleClose}>Sort by name</MenuItem>
-              <MenuItem onClick={handleClose}>Sort by queue</MenuItem>
-              <MenuItem onClick={handleClose}>Sort by canteen order</MenuItem>
-            </Menu>
-          </>
-        }
-        <IconButton
-          size="large"
-          aria-label="info guide"
-          onClick={handleMenu}
-          color="inherit"
-        >
-          <Info />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor: "#86BD55" }}>
+        <Toolbar>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: "#FFFFFF" }}
+          >
+            {title}
+          </Typography>
+          {
+            <>
+              <IconButton
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                size="large"
+                aria-label="sort"
+                onClick={handleClick}
+                color="inherit"
+                id="sort-button"
+              >
+                <Sort />
+              </IconButton>
+              <IconButton
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                size="large"
+                aria-label="sort"
+                onClick={handleClick}
+                color="inherit"
+                id="refresh-button"
+              >
+                <Refresh />
+              </IconButton>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "sort-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>Sort by name</MenuItem>
+                <MenuItem onClick={handleClose}>Sort by queue</MenuItem>
+                <MenuItem onClick={handleClose}>Sort by canteen order</MenuItem>
+              </Menu>
+            </>
+          }
+          <IconButton
+            size="large"
+            aria-label="info guide"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <Info />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 }

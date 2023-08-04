@@ -43,7 +43,7 @@ export default function HomeA() {
   );
   return (
     <>
-      <Box className="verA-header">
+      <Box className="verB-header">
         <Menu
           id="sort-menu"
           anchorEl={anchorEl}
