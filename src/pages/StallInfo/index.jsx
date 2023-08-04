@@ -9,6 +9,7 @@ import "./style.css";
 import BottomNavBar from "components/ExperimentNavbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import data from "../../assets/stalls.json";
+import { borderRadius } from "@mui/system";
 
 export default function StallInfo() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function StallInfo() {
   };
 
   // Extracting Stall ID from URL
-  const location = useLocation(); 
+  const location = useLocation();
   const currentURL = "/stalls/";
   const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
   const dynamicDescription = data[Number(stall_id)].description;
@@ -50,7 +51,7 @@ export default function StallInfo() {
       <div className="green-block">
       </div>
       <div className="stall-info-container">
-        <Card style= {{ marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)" }}>
+        <Card style= {{ marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
           <CardMedia
             component="img"
             style={{
