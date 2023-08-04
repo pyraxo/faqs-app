@@ -28,23 +28,23 @@ body {
   background-color: #ffffff;
 }
 
-.cards-container {
+.cards-container-B {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   height: calc(70vh - 60px);
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   width: 100%;
   position: absolute;
-  top: 30vh;
+  bottom: 60px;
   left: 0;
   margin: 0;
   overflow: scroll;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
 }
 
-.stall-card {
+.stall-card-B {
   width: 90vw;
   height: 7vh;
   border-radius: 10px;

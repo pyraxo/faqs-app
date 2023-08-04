@@ -19,7 +19,7 @@ import Refresh from "@mui/icons-material/Refresh";
 import "./style.css";
 import stallsData from "assets/stalls.json";
 import StallImage from "components/StallImage";
-import Logo from "assets/logo-black.png";
+import Availability from "assets/availability.png";
 import BottomNavBar from "components/ExperimentNavbar";
 
 export default function HomeA() {
@@ -61,14 +61,22 @@ export default function HomeA() {
           spacing={1}
           sx={{
             direction: "column",
+            backgroundColor: "#86bd55",
           }}
         >
           <img
-            src={Logo}
-            style={{ width: "auto", height: "10vh" }}
-            alt="logo"
+            src={Availability}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "auto",
+              height: "30vh",
+              alignContent: "center",
+              justifyContent: "left",
+            }}
+            alt="Availability"
           />
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -108,16 +116,16 @@ export default function HomeA() {
                 <Refresh />
               </IconButton>
             </Box>
-          </Box>
+          </Box> */}
         </Stack>
       </Box>
 
-      <Container className="cards-container">
+      <Container className="cards-container-B">
         <Stack spacing={3}>
           {stallsData.map((stall, index) => (
             <Card
               key={index}
-              className="stall-card"
+              className="stall-card-B"
               sx={{ borderRadius: "10px" }}
             >
               <CardActionArea
