@@ -11,11 +11,7 @@ import {
   CardActionArea,
   Menu,
   MenuItem,
-  CircularProgress,
 } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Sort from "@mui/icons-material/Sort";
-import Refresh from "@mui/icons-material/Refresh";
 
 import "./style.css";
 import stallsData from "assets/stalls.json";
@@ -110,13 +106,17 @@ export default function HomeA() {
             flexDirection: "column",
             alignContent: "center",
             justifyContent: "center",
+            paddingBottom: "8vh",
           }}
         >
           {sortWrapper(stallsData).map((stall, index) => (
             <Card
               key={index}
               className="stall-card"
-              sx={{ borderRadius: "10px", alignSelf: "center" }}
+              sx={{
+                borderRadius: "10px",
+                alignSelf: "center",
+              }}
             >
               <CardActionArea
                 component="div"
@@ -151,15 +151,27 @@ export default function HomeA() {
                           height: "100%",
                         }}
                       >
-                        <Typography
-                          component="div"
+                        <Box
                           sx={{
-                            fontWeight: "700",
-                            fontSize: "2vh",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignContent: "center",
+                            justifyContent: "right",
+                            height: "100%",
+                            mr: "1vw",
+                            width: "100%",
                           }}
                         >
-                          {stall.name}
-                        </Typography>
+                          <Typography
+                            component="div"
+                            sx={{
+                              fontWeight: "700",
+                              fontSize: "2vh",
+                            }}
+                          >
+                            {stall.name}
+                          </Typography>
+                        </Box>
                       </CardContent>
                     </Box>
                   </Grid>

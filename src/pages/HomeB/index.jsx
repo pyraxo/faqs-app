@@ -108,12 +108,20 @@ export default function HomeB() {
         />
       </Box>
       <Container className="cards-container-B">
-        <Stack spacing={3}>
+        <Stack
+          spacing={3}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+        >
           {sortWrapper(stallsData).map((stall, index) => (
             <Card
               key={index}
               className="stall-card-B"
-              sx={{ borderRadius: "10px" }}
+              sx={{ borderRadius: "10px", alignSelf: "center" }}
             >
               <CardActionArea
                 component="div"
