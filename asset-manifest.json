@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/faqs-app/static/css/main.a7c7c6b8.css",
-    "main.js": "/faqs-app/static/js/main.309f28c2.js",
+    "main.css": "/faqs-app/static/css/main.7734408a.css",
+    "main.js": "/faqs-app/static/js/main.5f8d722b.js",
     "static/js/787.46d26450.chunk.js": "/faqs-app/static/js/787.46d26450.chunk.js",
-    "static/media/chicken-rice.png": "/faqs-app/static/media/chicken-rice.dd5e2091cd430a57c0aa.png",
     "static/media/taiwanese.png": "/faqs-app/static/media/taiwanese.87753f2f6df0dafdd6fb.png",
     "static/media/hpb.png": "/faqs-app/static/media/hpb.83f0a32e9128ccbf069e.png",
     "static/media/availability.png": "/faqs-app/static/media/availability.7f5d14a7247f285cad00.png",
@@ -11,6 +10,7 @@
     "static/media/banmian.png": "/faqs-app/static/media/banmian.628be2212b4bec63fb2c.png",
     "static/media/stall-layout.png": "/faqs-app/static/media/stall-layout.d48503a5eab0c00fc9e2.png",
     "static/media/inter-latin-ext-wght-normal.woff2": "/faqs-app/static/media/inter-latin-ext-wght-normal.fad2a547f18821b21f1f.woff2",
+    "static/media/chicken-rice.png": "/faqs-app/static/media/chicken-rice.ccfbc2cf9ceca8c571ca.png",
     "static/media/inter-latin-wght-normal.woff2": "/faqs-app/static/media/inter-latin-wght-normal.5eb4a7768219776c5b91.woff2",
     "static/media/logo-black.png": "/faqs-app/static/media/logo-black.848646b50c8894e75e98.png",
     "static/media/logo-white.png": "/faqs-app/static/media/logo-white.c2701410a7012674f63e.png",
@@ -24,12 +24,12 @@
     "static/media/drinks.png": "/faqs-app/static/media/drinks.850094dd97a5198811d5.png",
     "static/media/canteen-traffic.png": "/faqs-app/static/media/canteen-traffic.ed43ae687088621ce7db.png",
     "index.html": "/faqs-app/index.html",
-    "main.a7c7c6b8.css.map": "/faqs-app/static/css/main.a7c7c6b8.css.map",
-    "main.309f28c2.js.map": "/faqs-app/static/js/main.309f28c2.js.map",
+    "main.7734408a.css.map": "/faqs-app/static/css/main.7734408a.css.map",
+    "main.5f8d722b.js.map": "/faqs-app/static/js/main.5f8d722b.js.map",
     "787.46d26450.chunk.js.map": "/faqs-app/static/js/787.46d26450.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7c7c6b8.css",
-    "static/js/main.309f28c2.js"
+    "static/css/main.7734408a.css",
+    "static/js/main.5f8d722b.js"
   ]
 }
