@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { useTracking } from "react-tracking";
@@ -13,10 +13,7 @@ import CardContainer from "components/CardContainer";
 import VersionCheck from "components/VersionCheck";
 
 export default function HomeB() {
-  const { Track, trackEvent } = useTracking(
-    { page: "HomeB" },
-    { dispatch: (data) => console.log(data) }
-  );
+  const { Track, trackEvent } = useTracking({ page: "HomeB" });
 
   const [startTime] = useLocalStorage("startTime");
   const [sortType, setSortType] = useState("canteen");
@@ -28,9 +25,13 @@ export default function HomeB() {
     trackEvent({
       action: "click",
       name,
-      timestamp: Date.now() - startTime,
+      timestamp: Date.now(),
       ...options,
     });
+
+  useEffect(() => {
+    trackEvent({ action: "page-load", timestamp: Date.now() - startTime });
+  }, [startTime, trackEvent]);
 
   return (
     <Track>

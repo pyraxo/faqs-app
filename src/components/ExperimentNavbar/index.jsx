@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
+import {
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  Typography,
+} from "@mui/material";
+
 import Info from "@mui/icons-material/Info";
-import Typography from "@mui/material/Typography";
 import "./style.css";
 
+import Survey from "components/Survey";
+
 const BottomNavBar = ({ trackClick }) => {
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [survey, setSurvey] = useState(false);
 
   const handleButtonClick = () => {
     trackClick("end-button");
@@ -25,9 +29,11 @@ const BottomNavBar = ({ trackClick }) => {
   const handleConfirmation = (proceed) => {
     setOpen(false);
     if (proceed) {
-      navigate("/end");
+      trackClick("survey-open");
+      setSurvey(true);
+    } else {
+      trackClick("end-button-close");
     }
-    trackClick("end-button-close");
   };
 
   const handleInfoClick = () => {
@@ -68,26 +74,6 @@ const BottomNavBar = ({ trackClick }) => {
       >
         <Info />
       </IconButton>
-      <Dialog open={open} onClose={() => handleConfirmation(false)}>
-        <DialogTitle>Confirmation</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you have finished deciding?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => handleConfirmation(true)}
-            color="error"
-            autoFocus
-          >
-            Yes
-          </Button>
-          <Button onClick={() => handleConfirmation(false)} color="primary">
-            No
-          </Button>
-        </DialogActions>
-      </Dialog>
       <Dialog open={helpOpen} onClose={handleInfoClose}>
         <DialogTitle>Instructions</DialogTitle>
         <DialogContent dividers>
@@ -97,7 +83,10 @@ const BottomNavBar = ({ trackClick }) => {
           </Typography>
           <Typography gutterBottom>
             Once you're done, press the button <b>"I'm done deciding!"</b> at
-            the bottom of the page to end the experiment.
+            the bottom of the page.
+          </Typography>
+          <Typography gutterBottom>
+            There will be a short survey before the experiment ends.
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -106,6 +95,31 @@ const BottomNavBar = ({ trackClick }) => {
           </Button>
         </DialogActions>
       </Dialog>
+      <Dialog open={open} onClose={() => handleConfirmation(false)}>
+        <DialogTitle>Confirmation</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you have finished deciding?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => handleConfirmation(false)}
+            color="primary"
+            autoFocus
+          >
+            No
+          </Button>
+          <Button onClick={() => handleConfirmation(true)} color="primary">
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Survey
+        trackClick={trackClick}
+        surveyOpen={survey}
+        completeSurvey={() => setSurvey(false)}
+      />
     </Container>
   );
 };

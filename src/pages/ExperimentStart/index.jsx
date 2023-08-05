@@ -21,15 +21,15 @@ import Instructions from "components/Instructions";
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const [startTime, setStartTime] = useLocalStorage("startTime", -1);
   const [code, setCode] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [startTime, setStartTime] = useLocalStorage("startTime", -1);
   const [storedCode, setStoredCode] = useLocalStorage("userCode", "");
 
   const [open, setOpen] = useState(false);
 
   const handleButtonClick = () => {
-    storedCode
+    return storedCode
       ? navigate(`/experiment/${(parseInt(storedCode) % 2) + 1}`)
       : setOpen(true);
   };

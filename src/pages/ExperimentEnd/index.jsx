@@ -1,13 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Logo from "assets/logo-white.png";
 import "./style.css";
 import useLocalStorage from "hooks/useLocalStorage";
+import { fetchValue, saveValue } from "services/Firebase";
+import { useCallback } from "react";
 
 export default function EndingPage() {
-  const [endTime, setEndTime] = useLocalStorage("endTime", -1);
+  const navigate = useNavigate();
+  const [startTime] = useLocalStorage("startTime", -1);
+  const [endTime] = useLocalStorage("endTime", -1);
+  const [userCode] = useLocalStorage("userCode", "");
+  const [lunchPlace] = useLocalStorage("lunchPlace", "");
+  const [secondAnswer] = useLocalStorage("secondAnswer", "");
+  const [featuresUseful] = useLocalStorage("featuresUseful", "");
+  const [seatUseful] = useLocalStorage("seatUseful", "");
+
+  const uploadData = useCallback(async () => {
+    if (!userCode) {
+      return console.error("No user code found?!");
+    }
+    const dataPath = `${userCode}/data`;
+    try {
+      // const data = await fetchValue(dataPath);
+      // if (data) return;
+      await saveValue(dataPath, {
+        lunchPlace,
+        secondAnswer,
+        featuresUseful,
+        seatUseful,
+        startTime,
+        endTime,
+        actions: window.dataLayer || [],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }, [
+    lunchPlace,
+    secondAnswer,
+    featuresUseful,
+    seatUseful,
+    userCode,
+    startTime,
+    endTime,
+  ]);
+
+  useEffect(() => {
+    if (endTime === -1) {
+      navigate("/start", { replace: true });
+    } else {
+      uploadData();
+    }
+  }, [endTime, uploadData, navigate]);
+
   return (
     <div className="experiment-container">
       <Container>

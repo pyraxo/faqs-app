@@ -2,6 +2,9 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import useLocalStorage from "hooks/useLocalStorage";
 
+export const isDashboardEnabled = (userCode) =>
+  (parseInt(userCode) % 2) + 1 === 2;
+
 export default function VersionCheck() {
   const [userCode] = useLocalStorage("userCode", "");
   const isRightVersion =

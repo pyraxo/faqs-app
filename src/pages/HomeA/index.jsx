@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { useTracking } from "react-tracking";
@@ -13,14 +13,7 @@ import CardContainer from "components/CardContainer";
 import VersionCheck from "components/VersionCheck";
 
 export default function HomeA() {
-  const { Track, trackEvent } = useTracking(
-    { page: "HomeA" },
-    {
-      dispatch: (data) => {
-        console.log("tracking data", data);
-      },
-    }
-  );
+  const { Track, trackEvent } = useTracking({ page: "HomeA" });
 
   const [startTime] = useLocalStorage("startTime");
   const [sortType, setSortType] = useState("canteen");
@@ -29,15 +22,17 @@ export default function HomeA() {
     Date.now()
   );
 
-  const trackClick = (name, options = {}) => {
-    console.log(options);
+  const trackClick = (name, options = {}) =>
     trackEvent({
       action: "click",
       name,
-      timestamp: Date.now() - startTime,
+      timestamp: Date.now(),
       ...options,
     });
-  };
+
+  useEffect(() => {
+    trackEvent({ action: "page-load", timestamp: Date.now() - startTime });
+  }, [startTime, trackEvent]);
 
   return (
     <Track>

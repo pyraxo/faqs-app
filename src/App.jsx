@@ -5,8 +5,9 @@ import {
   Route,
   Navigate,
   Outlet,
+  useLocation,
 } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 
 import useLocalStorage from "hooks/useLocalStorage";
 
@@ -17,9 +18,17 @@ import EndingPage from "pages/ExperimentEnd";
 import VersionA from "pages/HomeA";
 import VersionB from "pages/HomeB";
 
-const StartWrapper = () => {
+const RedirectWrapper = () => {
   const [startTime] = useLocalStorage("startTime", -1);
-  return startTime === -1 ? <Navigate to="/start" /> : <Outlet />;
+  const [endTime] = useLocalStorage("endTime", -1);
+  const location = useLocation();
+  return endTime !== -1 ? (
+    <Navigate to="/end" replace state={{ from: location }} />
+  ) : startTime === -1 ? (
+    <Navigate to="/start" replace state={{ from: location }} />
+  ) : (
+    <Outlet />
+  );
 };
 
 function App() {
@@ -27,16 +36,15 @@ function App() {
     <Router basename="/faqs-app">
       <Routes>
         <Route path="/start" element={<LandingPage />} />
-        <Route element={<StartWrapper />}>
-          <Route path="/end" element={<EndingPage />} />
+        <Route path="/end" element={<EndingPage />} />
+        <Route element={<RedirectWrapper />}>
           <Route path="/stalls" element={<StallInfo />} />
           <Route path="/stalls/:id" element={<StallInfo />} />
           <Route path="/starred" element={<Starred />} />
           <Route path="/experiment/1" element={<VersionA />} />
           <Route path="/experiment/2" element={<VersionB />} />
+          <Route path="*" element={<Navigate to="/start" />} />
         </Route>
-
-        <Route path="*" element={<Navigate to="/start" />} />
       </Routes>
     </Router>
   );
