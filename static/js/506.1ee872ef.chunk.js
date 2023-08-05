@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfaqs_app=self.webpackChunkfaqs_app||[]).push([[506],{4506:function(c,a,e){c.exports=e.p+"static/media/chicken-rice.ccfbc2cf9ceca8c571ca.png"}}]);
