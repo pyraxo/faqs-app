@@ -23,6 +23,7 @@ export default function Instructions() {
         <Typography style={{ color: "#ffffff" }} variant="body1">
           Your task is to decide your lunch plans using FAQS. Navigate through
           the app to explore menus, press buttons, and make your decision.
+          <b> Please complete this in one sitting!</b>
         </Typography>
         <Typography style={{ color: "#ffffff" }} variant="body1">
           Once you're done, press the button <b>"I'm done deciding!"</b> at the
