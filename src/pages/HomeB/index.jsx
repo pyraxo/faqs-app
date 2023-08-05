@@ -91,10 +91,12 @@ export default function HomeB() {
             style={{
               display: "flex",
               flexDirection: "row",
-              objectFit: "cover",
-              height: "30vh",
+              objectFit: "contain",
               alignContent: "center",
               justifyContent: "left",
+              position: "inherit",
+              height: "30vh",
+              width: "100vw",
             }}
             alt="Availability"
           />

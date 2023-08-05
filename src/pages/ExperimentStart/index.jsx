@@ -15,7 +15,7 @@ export default function LandingPage() {
 
   const handleButtonClick = () => {
     // Navigate to the EndingPage when the button is clicked
-    navigate("/experiment/1");
+    navigate("/experiment/2");
   };
   return (
     <Container className="experiment-start-container">

@@ -39,7 +39,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  height: calc(65vh - 60px);
+  height: calc(65% - 70px);
   padding-bottom: 2vh;
   width: 100%;
   position: absolute;
