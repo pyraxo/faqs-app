@@ -40,15 +40,19 @@ export default function StallInfo() {
       <div className="green-block">
       </div>
       <div className="stall-info-container">
-        <Card style= {{ width: "100%", marginBottom: 20, boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
+        <Card style= {{
+          width: "100%",
+          marginBottom: 20,
+          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+          borderRadius: "10px"
+          }}
+        >
           <CardMedia
             component="img"
             style={{
-              height: "250px",
               width: "100%",
-              objectFit: "cover"
+              height: "250px"
             }}
-            width="370px"
             image={ImagePath}
             alt={dynamicName}
           />

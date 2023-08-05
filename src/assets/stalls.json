@@ -2,7 +2,7 @@
   {
     "name": "Chicken Rice",
     "img": "chicken-rice.png",
-    "description": "Hainanese chicken rice specialty.",
+    "description": "Hainanese chicken rice specialty - tender poached chicken served with aromatic rice and delicious chilli sauce.",
     "menu": [
       { "item": "Roasted Chicken Rice", "price": "$3.50" },
       { "item": "Steamed Chicken Rice", "price": "$3.50" }
