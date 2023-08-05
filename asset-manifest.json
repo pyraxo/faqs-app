@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/faqs-app/static/css/main.319d9cd1.css",
-    "main.js": "/faqs-app/static/js/main.6faf7287.js",
+    "main.js": "/faqs-app/static/js/main.70ec131d.js",
     "static/js/7.0ae55644.chunk.js": "/faqs-app/static/js/7.0ae55644.chunk.js",
     "static/js/186.4ae86a2a.chunk.js": "/faqs-app/static/js/186.4ae86a2a.chunk.js",
     "static/js/217.9865d3b6.chunk.js": "/faqs-app/static/js/217.9865d3b6.chunk.js",
@@ -24,6 +24,7 @@
     "static/media/indian.png": "/faqs-app/static/media/indian.7ce08a8130d86a18f377.png",
     "static/media/banmian.png": "/faqs-app/static/media/banmian.628be2212b4bec63fb2c.png",
     "static/media/stall-layout.png": "/faqs-app/static/media/stall-layout.d48503a5eab0c00fc9e2.png",
+    "service-worker.js": "/faqs-app/service-worker.js",
     "static/media/inter-latin-ext-wght-normal.woff2": "/faqs-app/static/media/inter-latin-ext-wght-normal.fad2a547f18821b21f1f.woff2",
     "static/media/chicken-rice.png": "/faqs-app/static/media/chicken-rice.ccfbc2cf9ceca8c571ca.png",
     "static/media/inter-latin-wght-normal.woff2": "/faqs-app/static/media/inter-latin-wght-normal.5eb4a7768219776c5b91.woff2",
@@ -40,11 +41,11 @@
     "static/media/canteen-traffic.png": "/faqs-app/static/media/canteen-traffic.ed43ae687088621ce7db.png",
     "index.html": "/faqs-app/index.html",
     "main.319d9cd1.css.map": "/faqs-app/static/css/main.319d9cd1.css.map",
-    "main.6faf7287.js.map": "/faqs-app/static/js/main.6faf7287.js.map",
+    "main.70ec131d.js.map": "/faqs-app/static/js/main.70ec131d.js.map",
     "787.46d26450.chunk.js.map": "/faqs-app/static/js/787.46d26450.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.319d9cd1.css",
-    "static/js/main.6faf7287.js"
+    "static/js/main.70ec131d.js"
   ]
 }
