@@ -1,24 +1,49 @@
-// import "@fontsource/poppins";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import React from "react";
 
-import NavBar from "components/Navbar";
-import Home from "pages/Home";
-import Stalls from "pages/Stalls";
+import useLocalStorage from "hooks/useLocalStorage";
+
 import Starred from "pages/Starred";
 import StallInfo from "pages/StallInfo";
+import LandingPage from "pages/ExperimentStart";
+import EndingPage from "pages/ExperimentEnd";
+import VersionA from "pages/HomeA";
+import VersionB from "pages/HomeB";
+
+const RedirectWrapper = () => {
+  const [startTime] = useLocalStorage("startTime", -1);
+  const [endTime] = useLocalStorage("endTime", -1);
+  const location = useLocation();
+  return endTime !== -1 ? (
+    <Navigate to="/end" replace state={{ from: location }} />
+  ) : startTime === -1 ? (
+    <Navigate to="/start" replace state={{ from: location }} />
+  ) : (
+    <Outlet />
+  );
+};
 
 function App() {
   return (
     <Router basename="/faqs-app">
       <Routes>
-        <Route path="/stalls" element={<Stalls />} />
-        <Route path="/stalls/:id" element={<StallInfo />} />
-        <Route path="/starred" element={<Starred />} />
-        <Route exact path="/" element={<Home />} />
+        <Route path="/start" element={<LandingPage />} />
+        <Route path="/end" element={<EndingPage />} />
+        <Route element={<RedirectWrapper />}>
+          <Route path="/stalls/:id" element={<StallInfo />} />
+          <Route path="/experiment/1" element={<VersionA />} />
+          <Route path="/experiment/2" element={<VersionB />} />
+          <Route path="*" element={<Navigate to="/start" />} />
+        </Route>
       </Routes>
-      <NavBar />
     </Router>
   );
 }

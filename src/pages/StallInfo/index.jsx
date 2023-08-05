@@ -1,440 +1,190 @@
+import "./style.css";
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import useStatus from "hooks/useStatus";
-import useStarred from "hooks/useStarred";
-// import useCalculator from "hooks/useCalculator";
-
+import { useNavigate, useParams } from "react-router-dom";
 import {
-  Typography,
-  IconButton,
+  Box,
+  Card,
   CardContent,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
+  CardMedia,
   Container,
   Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
 } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { useTracking } from "react-tracking";
 
-import "./style.css";
-import HPB from "assets/hpb.png";
-import StarIcon from "assets/star-icon.png";
-import BackIcon from "assets/back-icon.png";
-import MenuTab from "assets/menu-tab.png";
-import CalculatorTab from "assets/calculator-tab.png";
-import stallInfos from "assets/stalls.json";
-import Header from "components/Header";
-import StarButton from "components/StarButton";
+import BottomNavBar from "components/ExperimentNavbar";
+import data from "../../assets/stalls.json";
+import { isDashboardEnabled } from "components/VersionCheck";
 
-const StallImage = ({ filepath, alt }) => {
+export default function StallInfo() {
+  const { Track, trackEvent } = useTracking({ page: "StallsInfo" });
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { description, menu, name, img, queue } = data[parseInt(id)];
+
   const [imageSrc, setImageSrc] = useState("");
-  import(`assets/${filepath}`).then((module) => setImageSrc(module.default));
-  return (
-    <img
-      src={imageSrc}
-      alt={alt}
-      style={{
-        height: 70,
-        width: 70,
-        borderRadius: "100%",
-      }}
-    />
-  );
-};
+  import(`assets/${img}`).then((module) => setImageSrc(module.default));
 
-const StallInfoContent = ({ stallId, queueLength, waitTime, isClosed }) => {
-  const [toggleStars, isStarred] = useStarred();
-  const handleStarClick = (event) => {
-    event.stopPropagation();
-    setTimeout(() => toggleStars(stallId), 100);
+  const handleButtonClick = () => {
+    navigate(`/experiment/${isDashboardEnabled ? 2 : 1}`);
   };
 
-  const { name, img, description } = stallInfos[stallId];
-
-  const menu = stallInfos[stallId].menu || [];
+  const trackClick = (name) =>
+    trackEvent({
+      action: "click",
+      name,
+      timestamp: Date.now(),
+      stallId: id,
+    });
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          paddingBottom: "12px",
-        }}
-      >
-        <Typography variant="h6" component="div" style={{ flex: 1 }}>
-          <b>{name}</b>
-        </Typography>
-        <StarButton
-          handleClick={handleStarClick}
-          isStarred={() => isStarred(stallId)}
-        />
-      </div>
-      <div
-        style={{ display: "flex", alignItems: "center", paddingBottom: "12px" }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70px",
-            paddingRight: "12px",
+    <Track>
+      <ArrowBackIosIcon
+        className="back-icon"
+        sx={{ fontSize: 30, color: "#ffffff" }}
+        onClick={handleButtonClick}
+      />
+      <Box className="green-block" />
+      <Container className="stall-info-container">
+        <Card
+          sx={{
+            width: "80vw",
+            height: "40vh",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
+            marginBottom: "2vh",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignContent: "center",
+            // justifyContent: "center",
           }}
+          onClick={() => trackClick("stall-card")}
         >
-          <StallImage
-            filepath={img}
+          <CardMedia
+            component="img"
+            image={imageSrc}
             alt={name}
-            style={{
-              height: 70,
-              width: 70,
-              borderRadius: "100%",
-              alignItems: "center",
-            }}
+            className="card-image"
           />
-        </div>
-        <div style={{ flex: 1 }}>
-          <CardContent style={{ padding: 0 }}>
-            <Typography variant="body2" nowrap="true" align="left">
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyItems: "center",
+              width: "100%",
+              height: "10vh",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "2vh",
+                fontWeight: "700",
+              }}
+            >
+              {name}
+            </Typography>
+            <Typography sx={{ fontSize: "2vh" }}>
+              <b>{queue}</b> mins
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card
+          sx={{
+            width: "80vw",
+            height: "10vh",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            marginBottom: "2vh",
+          }}
+          onClick={() => trackClick("stall-description")}
+        >
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Typography sx={{ fontSize: "1.5vh", textAlign: "center" }}>
               {description}
             </Typography>
           </CardContent>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 12,
-        }}
-      >
-        <img
-          src={HPB}
-          alt="HPB"
+        </Card>
+        <Card
           style={{
-            height: 50,
-            width: 50,
+            width: "80vw",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            height: menu ? "26vh" : "10vh",
           }}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 12,
-        }}
-      >
-        {isClosed ? (
-          <Container>
-            <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-              Closed
-            </Typography>
-          </Container>
-        ) : (
-          <TableContainer>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell align="center">No. of Queue</TableCell>
-                  <TableCell align="center">Est. Waiting Time</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="center">{queueLength}</TableCell>
-                  <TableCell align="center">{waitTime} minutes</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-      </div>
-      <Typography
-        variant="subtitle1"
-        component="div"
-        style={{
-          fontWeight: "bold",
-          textDecoration: "underline",
-          textAlign: "left",
-          paddingTop: "12px",
-        }}
-      >
-        Menu
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-            {menu.map((menuItem) => (
-              <TableRow key={menuItem.item}>
-                <TableCell align="left">{menuItem.item}</TableCell>
-                <TableCell align="left">{menuItem.price}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  );
-};
-
-export default function StallInfo() {
-  const { id } = useParams();
-  const [activeTab, setActiveTab] = useState("menu");
-  const [status, , isClosed] = useStatus();
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-
-  const [items, setItems] = useState([
-    { item: "Rice", unit_price: "$1.50", quantity: 0 },
-    { item: "Meat", unit_price: "$1.00", quantity: 0 },
-    { item: "Vegetable", unit_price: "$0.50", quantity: 0 },
-  ]);
-
-  const handlePlusClick = (itemName) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.item === itemName ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const handleMinusClick = (itemName) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.item === itemName && item.quantity > 0
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  const computeTotalPrice = () => {
-    return items
-      .map((item) => parseFloat(item.unit_price.slice(1)) * item.quantity)
-      .reduce((a, b) => a + b, 0);
-  };
-  
-  const userGuideContent = (
-    <>
-      <Typography variant="body1">
-        <u>Explore Menus</u>
-        <br />
-        <img
-          src={MenuTab}
-          alt="imported"
-        />
-        <br/>
-        Navigate to the 'Menu' tab to discover stall details and view their menu lists.
-        <br/>
-        <br/>
-
-        <u>Meal Price Estimation</u>
-        <br />
-        <img
-          src={CalculatorTab}
-          alt="imported"
-        />
-        <br/>
-        Visit the 'Calculator' tab to estimate the cost of your meal.
-        <br/>
-        <br/>
-
-        <u>Mark as Favourite</u>
-        <br />
-        <img
-          src={StarIcon}
-          alt="imported"
-        />
-        <br/>
-        Press the star button to add a stall to your favourites list.
-        <br />
-        <br />
-
-        <u>Return to Stall List</u>
-        <br />
-        <img
-          src={BackIcon}
-          alt="imported"
-        />
-        <br/>
-        To go back to the stall list, press the back button located on the top left.
-      </Typography>
-    </>
-  );
-
-  return (
-    <>
-      <Header
-        userGuideContent={userGuideContent}
-        title={
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Link
-              to="/stalls"
-              style={{ flex: "0 0 auto", textDecoration: "none" }}
+          onClick={() => trackClick("stall-menu")}
+        >
+          <CardContent
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="h6"
+              component="div"
+              style={{
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
             >
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="back"
-                style={{ flex: "0 0 auto", color: "#FFFFFF" }}
-              >
-                <ArrowBackIosNewIcon />
-              </IconButton>
-            </Link>
-            <Typography variant="h6" component="div" style={{ flex: 1 }}>
-              {stallInfos[id].name}
+              Menu
             </Typography>
-          </div>
-        }
-      />
-      <div className="tab-container">
-        <div className="tabs">
-          <button
-            className={`tab-button ${activeTab === "menu" ? "active" : ""}`}
-            onClick={() => handleTabChange("menu")}
-          >
-            Menu
-          </button>
-          <button
-            className={`tab-button ${
-              activeTab === "calculator" ? "active" : ""
-            }`}
-            onClick={() => handleTabChange("calculator")}
-          >
-            Calculator
-          </button>
-        </div>
-        <div className="tab-content">
-          {activeTab === "menu" && (
-            <div className="menu-tab">
-              <StallInfoContent
-                stallId={id}
-                queueLength={status[id].queueLength}
-                waitTime={status[id].waitTime}
-                isClosed={isClosed(id)}
-              />
-            </div>
-          )}
-          {activeTab === "calculator" && (
-            <div className="calculator-tab">
-              <p>
-                <TableContainer
-                  component={Paper}
-                  style={{ backgroundColor: "#FBD870" }}
-                >
-                  <Table sx={{ minWidth: 300 }} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell
-                          style={{
-                            fontWeight: 800,
-                            padding: "20px",
-                            borderBottom: "1px solid black",
+            {menu ? (
+              <TableContainer
+                component="div"
+                sx={{ width: "80vw", height: "20vh" }}
+              >
+                <Table sx={{ width: "80vw" }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Items</TableCell>
+                      <TableCell align="right">Price</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {menu &&
+                      menu.map((row) => (
+                        <TableRow
+                          key={row.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
                           }}
                         >
-                          Item
-                        </TableCell>
-                        <TableCell
-                          style={{
-                            fontWeight: 800,
-                            borderBottom: "1px solid black",
-                          }}
-                        >
-                          Unit Price
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          style={{
-                            fontWeight: 800,
-                            padding: "20px",
-                            borderBottom: "1px solid black",
-                          }}
-                        >
-                          Qty
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {items.map((row) => (
-                        <TableRow key={row.item}>
-                          <TableCell
-                            component="th"
-                            scope="row"
-                            style={{
-                              padding: "20px",
-                              borderBottom: "1px solid black",
-                            }}
-                          >
+                          <TableCell component="th" scope="row">
                             {row.item}
                           </TableCell>
-                          <TableCell
-                            style={{ borderBottom: "1px solid black" }}
-                          >
-                            {row.unit_price}
-                          </TableCell>
-                          <TableCell
-                            align="center"
-                            style={{
-                              padding: "20px",
-                              borderBottom: "1px solid black",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "flex-start",
-                              }}
-                            >
-                              <IconButton
-                                onClick={() => handleMinusClick(row.item)}
-                                size="small"
-                                edge="end"
-                                style={{ marginRight: "8px" }}
-                              >
-                                <RemoveIcon />
-                              </IconButton>
-                              {row.quantity}
-                              <IconButton
-                                onClick={() => handlePlusClick(row.item)}
-                                size="small"
-                                edge="end"
-                                style={{ marginLeft: "8px" }}
-                              >
-                                <AddIcon />
-                              </IconButton>
-                            </div>
-                          </TableCell>
+                          <TableCell align="right">{row.price}</TableCell>
                         </TableRow>
                       ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <div className="total-price-container">
-                  <Typography variant="h6">
-                    Total Price: ${computeTotalPrice().toFixed(2)}
-                  </Typography>
-                </div>
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-    </>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            ) : (
+              <Typography variant="body2" color="textSecondary" key={name}>
+                No menu available for {name} stall.
+              </Typography>
+            )}
+          </CardContent>
+        </Card>
+        <BottomNavBar trackClick={trackClick} />
+      </Container>
+    </Track>
   );
 }

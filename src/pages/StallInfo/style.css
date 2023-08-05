@@ -1,54 +1,31 @@
-/* style.css */
+.stall-info-container {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 10vh;
+}
 
-body {
-    background-color: #eaeaea;
-    color: #ffffff;
-  }
+.green-block {
+  height: 30vh;
+  width: 100%;
+  background-color: #86bd55;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
-  .tab-container {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 20px;
-    justify-content: center;
-  }
+.card-image {
+  width: 80vw;
+  height: 30vh;
+  object-fit: contain;
+}
 
-  .tabs {
-    display: flex;
-    justify-content: center;
-  }
-
-  .tab-button {
-    cursor: pointer;
-    background-color: #ffffff;
-    outline: none;
-    padding: 12px 24px;
-    width: 50%;
-    text-align: center;
-    font-size: 12px;
-    color: #000000;
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 8px 8px 0 0;
-    border: 2px solid #ffffff;
-  }
-
-  .tab-button.active {
-    background-color: #fead3d;
-    color: #000000;
-    border: 2px solid #fead3d;
-  }
-
-  /* Additional styles for the tab content (adjust as needed) */
-  .tab-content {
-    border: 2px solid #fead3d;
-    border-radius: 0 0 8px 8px;
-    width: 100%;
-    padding: 20px;
-    font-size: 12px;
-  }
-
-  .total-price-container {
-    padding-top: 20px;
-  }
+.back-icon {
+  position: absolute;
+  top: 4vh;
+  left: 4vw;
+}

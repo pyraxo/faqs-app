@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  background-color: #86bd55;
+}
+
+/* Specific class for EndingPage */
+.experiment-container {
+  background-color: #86bd55;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20%;
+}
+
+.logo-end {
+  width: 70%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 30px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter";
+}

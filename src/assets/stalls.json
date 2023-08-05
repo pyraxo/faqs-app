@@ -1,46 +1,89 @@
 [
   {
-    "name": "Dong Sheng Chicken Rice",
+    "name": "Chicken Rice",
     "img": "chicken-rice.png",
-    "description": "Hainanese chicken rice specialty.",
+    "description": "Hainanese chicken rice specialty - tender poached chicken served with aromatic rice and delicious chilli sauce.",
     "menu": [
       { "item": "Roasted Chicken Rice", "price": "$3.50" },
-      { "item": "Steamed Chicken Rice", "price": "$3.50" }
-    ]
+      { "item": "Steamed Chicken Rice", "price": "$3.50" },
+      { "item": "Braised Egg", "price": "$0.70" },
+      { "item": "Braised Beancurd", "price": "$0.70" }
+    ],
+    "queue": 17
   },
   {
-    "name": "Al-Masha's Kitchen",
+    "name": "Indian",
     "img": "indian.png",
-    "description": "Experience the vibrant flavors of India with our authentic and aromatic dishes, showcasing the best of Indian cuisine."
+    "description": "Experience the vibrant flavors of India with our authentic and aromatic dishes, showcasing the best of Indian cuisine.",
+    "queue": 6
   },
   {
-    "name": "TaiWanese",
+    "name": "Taiwanese",
     "img": "taiwanese.png",
-    "description": "Savor the combination of fragrant fried rice and delectable cutlets, transporting your taste buds to the streets of Taiwan."
+    "description": "Savour the combination of fragrant fried rice and delectable cutlets, transporting your taste buds to the streets of Taiwan.",
+    "menu": [
+      { "item": "Fried Chicken with Fried Rice", "price": "$3.50" },
+      { "item": "Braised Pork Rice", "price": "$2.50" },
+      { "item": "Fried Chicken", "price": "$2.50" }
+    ],
+    "queue": 5
   },
   {
     "name": "Healthy Soup",
     "img": "healthy-soup.png",
-    "description": "Serving variety of Chinese herbal soups, nourishing both your body with their wholesome goodness."
+    "description": "Serving variety of Chinese herbal soups, nourishing both your body with their wholesome goodness.",
+    "menu": [
+      { "item": "Soup of the Day", "price": "$3.50" },
+      { "item": "Student Meal", "price": "$2.50" },
+      { "item": "Rice", "price": "$1.00" }
+    ],
+    "queue": 6
   },
   {
     "name": "Mixed Rice",
     "img": "mixed-rice.png",
-    "description": "Delightful assortment of flavorful dishes, allowing you to have a diverse range of choices.",
+    "description": "Delightful assortment of flavourful dishes, allowing you to have a diverse range of choices.",
     "menu": [
-      { "item": "Rice", "price": "$1.50" },
+      { "item": "Rice/Noodles", "price": "$1.00" },
       { "item": "Meat", "price": "$1.00" },
+      { "item": "Premium Meat", "price": "$1.50" },
       { "item": "Vegetable", "price": "$0.50" }
-    ]
+    ],
+    "queue": 10
   },
   {
     "name": "Drinks & Snacks",
     "img": "drinks.png",
-    "description": "Quench your thirst with classic kopitiam drinks served fresh and full of flavor at our drinks stall."
+    "description": "Quench your thirst with classic kopitiam drinks served fresh and full of flavor at our drinks stall.",
+    "menu": [
+      { "item": "Iced Milo", "price": "$1.10" },
+      { "item": "Iced Tea", "price": "$1.10" },
+      { "item": "Iced Coffee", "price": "$1.00" },
+      { "item": "Hot Milo", "price": "$0.80" },
+      { "item": "Hot Tea", "price": "$0.80" },
+      { "item": "Hot Coffee", "price": "$0.70" },
+      { "item": "Egg Mayo Sandwich", "price": "$1.70" },
+      { "item": "Lo Mai Kai", "price": "$1.60" },
+      { "item": "Fan Choy", "price": "$1.70" },
+      { "item": "Siew Mai", "price": "$0.80" },
+      { "item": "Char Siew Pau", "price": "$0.80" },
+      { "item": "Chicken Pau", "price": "$0.80" },
+      { "item": "Red Bean Pau", "price": "$0.70" },
+      { "item": "Lotus Paste Pau", "price": "$0.70" }
+    ],
+    "queue": 5
   },
   {
     "name": "Ban Mian",
     "img": "banmian.png",
-    "description": "Dive into the rich flavors of traditional banmian, handmade, promising a bowl of comfort in every bite."
+    "description": "Dive into the rich flavours of traditional banmian, handmade, promising a bowl of comfort in every bite.",
+    "menu": [
+      { "item": "Handmade Noodles", "price": "$4.20" },
+      { "item": "Fishball Noodles", "price": "$3.50" },
+      { "item": "Meatball Noodles", "price": "$3.50" },
+      { "item": "Laksa", "price": "$3.50" },
+      { "item": "Additional ingredients", "price": "$0.80" }
+    ],
+    "queue": 18
   }
 ]

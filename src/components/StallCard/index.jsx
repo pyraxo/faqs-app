@@ -15,23 +15,7 @@ import DoNotDisturb from "@mui/icons-material/DoNotDisturb";
 import HPB from "assets/hpb.png";
 import stallInfos from "assets/stalls.json";
 import StarButton from "components/StarButton";
-
-export const StallImage = ({ filepath, alt }) => {
-  const [imageSrc, setImageSrc] = useState("");
-  import(`assets/${filepath}`).then((module) => setImageSrc(module.default));
-  return (
-    <CardMedia
-      component="img"
-      sx={{
-        height: 70,
-        width: 70,
-        borderRadius: "100%",
-      }}
-      image={imageSrc}
-      alt={alt}
-    />
-  );
-};
+import StallImage from "components/StallImage";
 
 export default function StallCard({
   stallId,
@@ -88,7 +72,15 @@ export default function StallCard({
           >
             {isClosed ? (
               <>
-                <StallImage filepath={img} alt={name} />
+                <StallImage
+                  filepath={img}
+                  alt={name}
+                  style={{
+                    height: 70,
+                    width: 70,
+                    borderRadius: "100%",
+                  }}
+                />
                 <DoNotDisturb
                   sx={{
                     color: grey[800],
