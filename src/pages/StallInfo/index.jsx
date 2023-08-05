@@ -64,7 +64,6 @@ export default function StallInfo() {
             }}
           >
             <Typography
-              gutterBottom
               variant="h5"
               component="div"
               style={{ fontWeight: "bold" }}
@@ -110,7 +109,6 @@ export default function StallInfo() {
             }}
           >
             <Typography
-              gutterBottom
               variant="h6"
               component="div"
               style={{
@@ -121,7 +119,7 @@ export default function StallInfo() {
             >
               Menu
             </Typography>
-            <div>
+            <div className="menu-container">
               {dynamicMenu ? (
                 <div key={data[Number(stall_id)].name}>
                   <ul>
