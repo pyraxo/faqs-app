@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import CircularProgress from "@mui/material/CircularProgress";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
 import Sort from "@mui/icons-material/Sort";
 import Refresh from "@mui/icons-material/Refresh";
-import CircularProgress from "@mui/material/CircularProgress";
 
-export default function UtilityIcons({ handleClickSort, setLastUpdated }) {
+export default function UtilityIcons({
+  trackClick,
+  setLastUpdated,
+  setSortType,
+}) {
   const [isRefresh, setIsRefresh] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const handleRefresh = () => {
+    trackClick("refresh");
     setTimeout(() => {
       setLastUpdated(Date.now());
       setIsRefresh(true);
@@ -16,6 +25,18 @@ export default function UtilityIcons({ handleClickSort, setLastUpdated }) {
       () => setIsRefresh(false),
       (Math.floor(Math.random() * 3) + 1) * 1000
     );
+  };
+  const handleClose = (option) => {
+    if (option) trackClick("sort-menu-option", { choice: option });
+    setTimeout(() => {
+      setAnchorEl(null);
+      setSortType(option);
+    }, 100);
+  };
+  const handleClickSort = (event) => {
+    trackClick("sort-menu-open");
+    const target = event.currentTarget;
+    setTimeout(() => setAnchorEl(target), 100);
   };
   return (
     <Box
@@ -27,6 +48,21 @@ export default function UtilityIcons({ handleClickSort, setLastUpdated }) {
         height: "100%",
       }}
     >
+      <Menu
+        id="sort-menu"
+        anchorEl={anchorEl}
+        open={!!anchorEl}
+        onClose={() => handleClose()}
+        MenuListProps={{
+          "aria-labelledby": "sort-button",
+        }}
+      >
+        <MenuItem onClick={() => handleClose("name")}>Sort by name</MenuItem>
+        <MenuItem onClick={() => handleClose("queue")}>Sort by queue</MenuItem>
+        <MenuItem onClick={() => handleClose("canteen")}>
+          Sort by canteen order
+        </MenuItem>
+      </Menu>
       <IconButton
         size="large"
         aria-label="sort"

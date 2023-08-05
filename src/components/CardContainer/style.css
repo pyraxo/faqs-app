@@ -1,0 +1,48 @@
+.cards-container-A {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(78vh - 60px);
+  width: 100%;
+  position: absolute;
+  top: 22vh;
+  left: 0;
+  margin: 0;
+  overflow: scroll;
+}
+
+.stall-card-A {
+  width: 90vw;
+  height: 7vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  justify-items: flex-start;
+}
+
+.cards-container-B {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(65% - 70px);
+  padding-bottom: 2vh;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  margin: 0;
+  overflow: scroll;
+}
+
+.stall-card-B {
+  width: 90vw;
+  height: 7vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  justify-items: flex-start;
+}

@@ -17,6 +17,7 @@ import Close from "@mui/icons-material/Close";
 import Logo from "assets/logo-white.png";
 import useLocalStorage from "hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
+import Instructions from "components/Instructions";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -45,15 +46,19 @@ export default function LandingPage() {
       setStartTime(Date.now());
       console.log(code);
     }
-    setTimeout(
-      () => navigate(`/experiment/${(parseInt(storedCode) % 2) + 1}`),
-      100
-    );
   };
 
   useEffect(() => {
     setIsValid(code.length === 6 && !isNaN(code));
   }, [code]);
+
+  useEffect(() => {
+    if (storedCode) {
+      navigate(`/experiment/${(parseInt(storedCode) % 2) + 1}`, {
+        replace: true,
+      });
+    }
+  }, [storedCode, navigate]);
 
   return (
     <Container className="experiment-start-container">
@@ -95,32 +100,7 @@ export default function LandingPage() {
           </Typography>
         </Box>
 
-        <Container
-          sx={{
-            height: "55vh",
-            width: "90vw",
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Stack spacing={3}>
-            <Typography style={{ color: "#ffffff" }} variant="body1">
-              Thank you for participating in our experiment! Free to interact
-              with our app as you see fit.
-            </Typography>
-            <Typography style={{ color: "#ffffff" }} variant="body1">
-              Your task is to decide your lunch plans using FAQS. Navigate
-              through the app to explore menus, press buttons, and make your
-              decision.
-            </Typography>
-            <Typography style={{ color: "#ffffff" }} variant="body1">
-              Once you're done, press the button <b>"I'm done deciding!"</b> at
-              the bottom of the page to end the experiment.
-            </Typography>
-          </Stack>
-        </Container>
+        <Instructions />
 
         <Box style={{ paddingBottom: "10vh" }}>
           <Button

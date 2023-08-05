@@ -4,8 +4,10 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Logo from "assets/logo-white.png";
 import "./style.css";
+import useLocalStorage from "hooks/useLocalStorage";
 
 export default function EndingPage() {
+  const [endTime, setEndTime] = useLocalStorage("endTime", -1);
   return (
     <div className="experiment-container">
       <Container>
