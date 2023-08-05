@@ -1,13 +1,5 @@
 let CACHE_NAME = "faqs-cache-v1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/faqs-app",
-  "/faqs-app/start",
-  "/faqs-app/end",
-  "/faqs-app/experiment/1",
-  "/faqs-app/experiment/2",
-];
+const urlsToCache = ["/faqs-app", "/faqs-app/start", "/faqs-app/end"];
 self.addEventListener("install", function (event) {
   // Perform install steps
   event.waitUntil(
