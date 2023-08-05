@@ -78,7 +78,7 @@ export default function CardContainer({
                       flexDirection: "row",
                       width: "80vw",
                       height: "100%",
-                      alignContent: "center",
+                      alignItems: "center",
                       justifyContent: "left",
                     }}
                   >
@@ -86,7 +86,7 @@ export default function CardContainer({
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        alignContent: "center",
+                        alignItems: "center",
                         justifyContent: "center",
                         height: "100%",
                       }}
@@ -95,7 +95,7 @@ export default function CardContainer({
                         sx={{
                           display: "flex",
                           flexDirection: "row",
-                          alignContent: "center",
+                          alignItems: "center",
                           justifyContent: "right",
                           height: "100%",
                           mr: "1vw",
@@ -120,7 +120,7 @@ export default function CardContainer({
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      alignContent: "center",
+                      alignItems: "center",
                       justifyContent: "right",
                       height: "100%",
                       mr: "1vw",
@@ -133,23 +133,23 @@ export default function CardContainer({
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        alignContent: "center",
+                        alignItems: "center",
                         justifyContent: "center",
-                        width: "50%",
+                        width: "40%",
                         fontWeight: "800",
                       }}
                     >
                       {stall.queue}
                     </Typography>
                     <Typography
-                      variant="body2"
+                      variant="body1"
                       color="text.secondary"
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        alignContent: "center",
+                        alignItems: "center",
                         justifyContent: "center",
-                        width: "50%",
+                        width: "40%",
                       }}
                     >
                       min

@@ -38,9 +38,7 @@ function App() {
         <Route path="/start" element={<LandingPage />} />
         <Route path="/end" element={<EndingPage />} />
         <Route element={<RedirectWrapper />}>
-          <Route path="/stalls" element={<StallInfo />} />
           <Route path="/stalls/:id" element={<StallInfo />} />
-          <Route path="/starred" element={<Starred />} />
           <Route path="/experiment/1" element={<VersionA />} />
           <Route path="/experiment/2" element={<VersionB />} />
           <Route path="*" element={<Navigate to="/start" />} />

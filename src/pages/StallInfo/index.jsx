@@ -1,105 +1,133 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-
 import "./style.css";
-import BottomNavBar from "components/ExperimentNavbar";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { useTracking } from "react-tracking";
+
+import BottomNavBar from "components/ExperimentNavbar";
 import data from "../../assets/stalls.json";
+import { isDashboardEnabled } from "components/VersionCheck";
 
 export default function StallInfo() {
+  const { Track, trackEvent } = useTracking({ page: "StallsInfo" });
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { description, menu, name, img, queue } = data[parseInt(id)];
+
+  const [imageSrc, setImageSrc] = useState("");
+  import(`assets/${img}`).then((module) => setImageSrc(module.default));
+
   const handleButtonClick = () => {
-    navigate('/experiment/1');
+    navigate(`/experiment/${isDashboardEnabled ? 2 : 1}`);
   };
 
-  // Extracting Stall ID from URL
-  const location = useLocation();
-  const currentURL = "/stalls/";
-  const stall_id = location.pathname.replace(currentURL, ""); // Extract the "number" from the URL
-  const dynamicDescription = data[Number(stall_id)].description;
-  const dynamicMenu = data[Number(stall_id)].menu;
-  const dynamicName = data[Number(stall_id)].name;
-  const dynamicImage = data[Number(stall_id)].img;
-  const ImagePath = require(`../../assets/${dynamicImage}`);
+  const trackClick = (name) =>
+    trackEvent({
+      action: "click",
+      name,
+      timestamp: Date.now(),
+      stallId: id,
+    });
 
   return (
-    <div>
-      <div className="stall-info-header">
-        {/* Back Icon */}
-        <ArrowBackIosIcon
-          className="back-icon"
-          style={{ fontSize: 30, color: "#ffffff" }}
-          onClick={handleButtonClick}
-        />
-        <div style={{ flexGrow: 1 }}></div>
-      </div>
-      <div className="green-block">
-      </div>
-      <div className="stall-info-container">
-        <Card style= {{
-          width: "100%",
-          marginBottom: 20,
-          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-          borderRadius: "10px"
+    <Track>
+      <ArrowBackIosIcon
+        className="back-icon"
+        sx={{ fontSize: 30, color: "#ffffff" }}
+        onClick={handleButtonClick}
+      />
+      <Box className="green-block" />
+      <Container className="stall-info-container">
+        <Card
+          sx={{
+            width: "80vw",
+            height: "40vh",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
+            marginBottom: "2vh",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignContent: "center",
+            // justifyContent: "center",
           }}
+          onClick={() => trackClick("stall-card")}
         >
           <CardMedia
             component="img"
-            style={{
-              width: "100%",
-              height: "250px"
-            }}
-            image={ImagePath}
-            alt={dynamicName}
+            image={imageSrc}
+            alt={name}
+            className="card-image"
           />
           <CardContent
-            style={{
+            sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyItems: "center",
+              width: "100%",
+              height: "10vh",
             }}
           >
             <Typography
-              variant="h5"
-              component="div"
-              style={{ fontWeight: "bold" }}
+              sx={{
+                fontSize: "2vh",
+                fontWeight: "700",
+              }}
             >
-              <div>
-                {dynamicName}
-              </div>
+              {name}
+            </Typography>
+            <Typography sx={{ fontSize: "2vh" }}>
+              <b>{queue}</b> mins
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card
+          sx={{
+            width: "80vw",
+            height: "10vh",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            marginBottom: "2vh",
+          }}
+          onClick={() => trackClick("stall-description")}
+        >
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Typography sx={{ fontSize: "1.5vh", textAlign: "center" }}>
+              {description}
             </Typography>
           </CardContent>
         </Card>
         <Card
           style={{
-            width: "100%",
+            width: "80vw",
             borderRadius: "10px",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-            marginBottom: "20px",
+            height: menu ? "26vh" : "10vh",
           }}
-        >
-          <CardContent
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              {dynamicDescription}
-            </div>
-          </CardContent>
-        </Card>
-        <Card
-          style={{
-            width: "100%",
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-          }}
+          onClick={() => trackClick("stall-menu")}
         >
           <CardContent
             style={{
@@ -113,33 +141,50 @@ export default function StallInfo() {
               component="div"
               style={{
                 fontWeight: "bold",
-                textDecoration: "underline",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               Menu
             </Typography>
-            <div className="menu-container">
-              {dynamicMenu ? (
-                <div key={data[Number(stall_id)].name}>
-                  <ul>
-                    {dynamicMenu.map((item) => (
-                      <li key={item.item}>
-                        {item.item} - {item.price}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : (
-                <Typography variant="body2" color="textSecondary" key={data[Number(stall_id)].name}>
-                  No menu available for {data[Number(stall_id)].name}.
-                </Typography>
-              )}
-            </div>
+            {menu ? (
+              <TableContainer
+                component="div"
+                sx={{ width: "80vw", height: "20vh" }}
+              >
+                <Table sx={{ width: "80vw" }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Items</TableCell>
+                      <TableCell align="right">Price</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {menu &&
+                      menu.map((row) => (
+                        <TableRow
+                          key={row.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {row.item}
+                          </TableCell>
+                          <TableCell align="right">{row.price}</TableCell>
+                        </TableRow>
+                      ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            ) : (
+              <Typography variant="body2" color="textSecondary" key={name}>
+                No menu available for {name} stall.
+              </Typography>
+            )}
           </CardContent>
         </Card>
-        <BottomNavBar />
-      </div>
-    </div>
+        <BottomNavBar trackClick={trackClick} />
+      </Container>
+    </Track>
   );
 }

@@ -156,7 +156,12 @@ export default function Survey({ trackClick, surveyOpen, completeSurvey }) {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button type="submit" color="primary" onClick={handleNext1}>
+          <Button
+            type="submit"
+            color="primary"
+            onClick={handleNext1}
+            disabled={!location}
+          >
             Next
           </Button>
         </DialogActions>
