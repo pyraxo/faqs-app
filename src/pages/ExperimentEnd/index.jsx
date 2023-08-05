@@ -69,7 +69,7 @@ export default function EndingPage() {
         >
           <img src={Logo} className="logo-end" alt="Logo" />
           <Typography variant="h5" className="subtitle">
-            thanks for joining our
+            thank you for joining our
           </Typography>
           <Typography variant="h5" className="subtitle">
             web experiment!
