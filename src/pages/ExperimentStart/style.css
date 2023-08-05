@@ -13,11 +13,14 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #86bd55;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 .logo-start {
   max-width: 70vw;
   height: auto;
+  align-self: center;
 }
 
 img {

@@ -158,15 +158,27 @@ export default function HomeB() {
                           height: "100%",
                         }}
                       >
-                        <Typography
-                          component="div"
+                        <Box
                           sx={{
-                            fontWeight: "700",
-                            fontSize: "2vh",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignContent: "center",
+                            justifyContent: "right",
+                            height: "100%",
+                            mr: "1vw",
+                            width: "100%",
                           }}
                         >
-                          {stall.name}
-                        </Typography>
+                          <Typography
+                            component="div"
+                            sx={{
+                              fontWeight: "700",
+                              fontSize: "2vh",
+                            }}
+                          >
+                            {stall.name}
+                          </Typography>
+                        </Box>
                       </CardContent>
                     </Box>
                   </Grid>
