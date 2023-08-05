@@ -71,7 +71,9 @@ export default function HomeA() {
             "aria-labelledby": "sort-button",
           }}
         >
-          <MenuItem onClick={() => handleClose("name")}>Sort by name</MenuItem>
+          <MenuItem onClick={() => handleClose("name")}>
+            Sort by name
+          </MenuItem>
           <MenuItem onClick={() => handleClose("queue")}>
             Sort by queue
           </MenuItem>
