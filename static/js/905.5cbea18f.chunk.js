@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfaqs_app=self.webpackChunkfaqs_app||[]).push([[905],{9905:function(p,a,e){p.exports=e.p+"static/media/logo-black.848646b50c8894e75e98.png"}}]);

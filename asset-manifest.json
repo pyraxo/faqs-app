@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/faqs-app/static/css/main.e9e24614.css",
-    "main.js": "/faqs-app/static/js/main.97d4b72f.js",
+    "main.css": "/faqs-app/static/css/main.9649396c.css",
+    "main.js": "/faqs-app/static/js/main.af13cb86.js",
     "static/js/7.0ae55644.chunk.js": "/faqs-app/static/js/7.0ae55644.chunk.js",
     "static/js/186.4ae86a2a.chunk.js": "/faqs-app/static/js/186.4ae86a2a.chunk.js",
     "static/js/217.9865d3b6.chunk.js": "/faqs-app/static/js/217.9865d3b6.chunk.js",
@@ -9,13 +9,17 @@
     "static/js/506.1ee872ef.chunk.js": "/faqs-app/static/js/506.1ee872ef.chunk.js",
     "static/js/101.997b3682.chunk.js": "/faqs-app/static/js/101.997b3682.chunk.js",
     "static/js/271.42457fc5.chunk.js": "/faqs-app/static/js/271.42457fc5.chunk.js",
+    "static/js/846.134768b1.chunk.js": "/faqs-app/static/js/846.134768b1.chunk.js",
     "static/js/716.43f73393.chunk.js": "/faqs-app/static/js/716.43f73393.chunk.js",
     "static/js/970.6d45ab59.chunk.js": "/faqs-app/static/js/970.6d45ab59.chunk.js",
+    "static/js/905.5cbea18f.chunk.js": "/faqs-app/static/js/905.5cbea18f.chunk.js",
+    "static/js/404.8b0ca166.chunk.js": "/faqs-app/static/js/404.8b0ca166.chunk.js",
     "static/js/509.4e2a2610.chunk.js": "/faqs-app/static/js/509.4e2a2610.chunk.js",
     "static/js/187.86b14589.chunk.js": "/faqs-app/static/js/187.86b14589.chunk.js",
     "static/js/484.ac2efa87.chunk.js": "/faqs-app/static/js/484.ac2efa87.chunk.js",
     "static/js/909.8303d7e8.chunk.js": "/faqs-app/static/js/909.8303d7e8.chunk.js",
     "static/js/518.663f728a.chunk.js": "/faqs-app/static/js/518.663f728a.chunk.js",
+    "static/js/592.403a6be9.chunk.js": "/faqs-app/static/js/592.403a6be9.chunk.js",
     "static/js/257.32db6d79.chunk.js": "/faqs-app/static/js/257.32db6d79.chunk.js",
     "static/js/787.46d26450.chunk.js": "/faqs-app/static/js/787.46d26450.chunk.js",
     "static/media/taiwanese.png": "/faqs-app/static/media/taiwanese.87753f2f6df0dafdd6fb.png",
@@ -40,12 +44,12 @@
     "static/media/drinks.png": "/faqs-app/static/media/drinks.850094dd97a5198811d5.png",
     "static/media/canteen-traffic.png": "/faqs-app/static/media/canteen-traffic.ed43ae687088621ce7db.png",
     "index.html": "/faqs-app/index.html",
-    "main.e9e24614.css.map": "/faqs-app/static/css/main.e9e24614.css.map",
-    "main.97d4b72f.js.map": "/faqs-app/static/js/main.97d4b72f.js.map",
+    "main.9649396c.css.map": "/faqs-app/static/css/main.9649396c.css.map",
+    "main.af13cb86.js.map": "/faqs-app/static/js/main.af13cb86.js.map",
     "787.46d26450.chunk.js.map": "/faqs-app/static/js/787.46d26450.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9e24614.css",
-    "static/js/main.97d4b72f.js"
+    "static/css/main.9649396c.css",
+    "static/js/main.af13cb86.js"
   ]
 }
