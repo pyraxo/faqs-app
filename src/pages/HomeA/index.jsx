@@ -46,7 +46,7 @@ export default function HomeA() {
         >
           <img
             src={Logo}
-            style={{ width: "auto", height: "10vh" }}
+            style={{ width: "auto", height: "10dvh" }}
             alt="logo"
           />
           <LastUpdated lastUpdated={lastUpdated} />

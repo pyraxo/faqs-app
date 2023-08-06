@@ -70,7 +70,7 @@ export default function LandingPage() {
       >
         <Box
           sx={{
-            height: "20vh",
+            height: "20dvh",
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
@@ -102,7 +102,7 @@ export default function LandingPage() {
 
         <Instructions />
 
-        <Box style={{ paddingBottom: "10vh" }}>
+        <Box style={{ paddingBottom: "10dvh" }}>
           <Button
             onClick={handleButtonClick}
             style={{

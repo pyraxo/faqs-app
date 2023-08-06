@@ -7,7 +7,7 @@ export default function Instructions() {
   return (
     <Container
       sx={{
-        height: "55vh",
+        height: "55dvh",
         width: "90vw",
         display: "flex",
         flexDirection: "column",

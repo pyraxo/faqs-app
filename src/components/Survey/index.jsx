@@ -286,7 +286,7 @@ export default function Survey({ trackClick, surveyOpen, completeSurvey }) {
               display: "flex",
               flexDirection: "row",
               justifyContent: "left",
-              marginBottom: "1vh",
+              marginBottom: "1dvh",
             }}
           >
             <Rating

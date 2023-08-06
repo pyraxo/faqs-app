@@ -1,15 +1,15 @@
 .stall-info-container {
   width: 80vw;
-  height: 80vh;
+  height: 80dvh;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  margin-bottom: 10vh;
+  margin-bottom: 10dvh;
 }
 
 .green-block {
-  height: 30vh;
+  height: 30dvh;
   width: 100%;
   background-color: #86bd55;
   position: absolute;
@@ -20,12 +20,12 @@
 
 .card-image {
   width: 80vw;
-  height: 30vh;
+  height: 30dvh;
   object-fit: contain;
 }
 
 .back-icon {
   position: absolute;
-  top: 4vh;
+  top: 4dvh;
   left: 4vw;
 }

@@ -8,7 +8,7 @@ const formatter = buildFormatter(englishStrings);
 
 export default function LastUpdated({ lastUpdated }) {
   return (
-    <Typography sx={{ fontSize: "1.5vh", alignSelf: "center" }}>
+    <Typography sx={{ fontSize: "1.5dvh", alignSelf: "center" }}>
       waiting times last updated:{" "}
       {<TimeAgo date={lastUpdated} minPeriod={60} formatter={formatter} />} ago
     </Typography>

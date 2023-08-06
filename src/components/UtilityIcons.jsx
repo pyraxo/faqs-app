@@ -69,7 +69,7 @@ export default function UtilityIcons({
         onClick={handleClickSort}
         id="sort-button"
         sx={{
-          height: "1vh",
+          height: "1dvh",
           ml: "2vw",
           alignSelf: "center",
         }}
@@ -82,9 +82,9 @@ export default function UtilityIcons({
         onClick={handleRefresh}
         color="inherit"
         id="sort-button"
-        sx={{ height: "1vh", alignSelf: "center" }}
+        sx={{ height: "1dvh", alignSelf: "center" }}
       >
-        {isRefresh ? <CircularProgress size="2vh" /> : <Refresh />}
+        {isRefresh ? <CircularProgress size="2dvh" /> : <Refresh />}
       </IconButton>
     </Box>
   );

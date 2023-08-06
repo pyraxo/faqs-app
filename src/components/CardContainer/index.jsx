@@ -61,14 +61,14 @@ export default function CardContainer({
             <CardActionArea
               component="div"
               sx={{ height: "100%" }}
-              onClick={() => handleClick(index)}
+              onClick={() => handleClick(stallsData.indexOf(stall))}
             >
               <Grid sx={{ height: "100%" }} container spacing={0}>
                 <Grid xs={3}>
                   <StallImage
                     stall={stall}
                     filepath={stall.img}
-                    style={{ height: "10vh" }}
+                    style={{ height: "10dvh" }}
                   />
                 </Grid>
                 <Grid xs={6} sx={{ height: "100%" }}>
@@ -106,7 +106,7 @@ export default function CardContainer({
                           component="div"
                           sx={{
                             fontWeight: "700",
-                            fontSize: "2vh",
+                            fontSize: "2dvh",
                           }}
                         >
                           {stall.name}

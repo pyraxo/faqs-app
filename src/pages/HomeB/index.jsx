@@ -53,7 +53,7 @@ export default function HomeB() {
               alignContent: "center",
               justifyContent: "left",
               position: "inherit",
-              height: "30vh",
+              height: "30dvh",
               width: "100vw",
             }}
             alt="Availability"

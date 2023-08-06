@@ -8,13 +8,13 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #86bd55;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  padding-top: 10dvh;
+  padding-bottom: 10dvh;
 }
 
 .logo-start {

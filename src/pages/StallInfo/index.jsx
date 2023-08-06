@@ -57,10 +57,10 @@ export default function StallInfo() {
         <Card
           sx={{
             width: "80vw",
-            height: "40vh",
+            height: "40dvh",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
             borderRadius: "10px",
-            marginBottom: "2vh",
+            marginBottom: "2dvh",
             // display: "flex",
             // flexDirection: "column",
             // alignContent: "center",
@@ -81,18 +81,18 @@ export default function StallInfo() {
               alignItems: "center",
               justifyItems: "center",
               width: "100%",
-              height: "10vh",
+              height: "10dvh",
             }}
           >
             <Typography
               sx={{
-                fontSize: "2vh",
+                fontSize: "2dvh",
                 fontWeight: "700",
               }}
             >
               {name}
             </Typography>
-            <Typography sx={{ fontSize: "2vh" }}>
+            <Typography sx={{ fontSize: "2dvh" }}>
               <b>{queue}</b> mins
             </Typography>
           </CardContent>
@@ -100,10 +100,10 @@ export default function StallInfo() {
         <Card
           sx={{
             width: "80vw",
-            height: "10vh",
+            height: "10dvh",
             borderRadius: "10px",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-            marginBottom: "2vh",
+            marginBottom: "2dvh",
           }}
           onClick={() => trackClick("stall-description")}
         >
@@ -115,7 +115,7 @@ export default function StallInfo() {
               justifyContent: "center",
             }}
           >
-            <Typography sx={{ fontSize: "1.5vh", textAlign: "center" }}>
+            <Typography sx={{ fontSize: "1.5dvh", textAlign: "center" }}>
               {description}
             </Typography>
           </CardContent>
@@ -125,7 +125,7 @@ export default function StallInfo() {
             width: "80vw",
             borderRadius: "10px",
             boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-            height: menu ? "26vh" : "10vh",
+            height: menu ? "26dvh" : "10dvh",
           }}
           onClick={() => trackClick("stall-menu")}
         >
@@ -149,7 +149,7 @@ export default function StallInfo() {
             {menu ? (
               <TableContainer
                 component="div"
-                sx={{ width: "80vw", height: "20vh" }}
+                sx={{ width: "80vw", height: "20dvh" }}
               >
                 <Table sx={{ width: "80vw" }} aria-label="simple table">
                   <TableHead>
